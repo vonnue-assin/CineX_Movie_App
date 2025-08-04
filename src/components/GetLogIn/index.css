@@ -1,0 +1,15 @@
+.signIn-button {
+  border: none;
+  margin: 20px;
+  margin-left: 30px;
+  cursor: pointer;
+  font-family: 'bold-poppins-font';
+  background-color: red;
+  color: #fff;
+  font-size: 18px;
+  padding: 10px 20px;
+}
+
+.getLogIn-attributes {
+  text-align: right;
+}
