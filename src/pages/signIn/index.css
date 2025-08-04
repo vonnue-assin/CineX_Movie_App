@@ -1,0 +1,49 @@
+.signIn-body {
+  background-image: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.7),
+      rgba(17, 17, 17, 0.6)
+    ),
+    url('../../assets/images/CineX.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  width: 100%;
+  background-attachment: fixed;
+  margin: 0px;
+  background-color: black;
+}
+
+.signIn-title {
+  margin: 0px;
+  color: #fff;
+  font-size: 50px;
+  font-family: 'bold-poppins-font';
+}
+
+.signIn-title-sub-heading {
+  color: #fff;
+  font-size: 30px;
+  font-family: 'extraLight-poppins-font';
+  width: 700px;
+  margin-top: 50px;
+}
+
+.signIn-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  padding-top: 200px;
+}
+
+.logo {
+  margin-top: 0px;
+  color: red;
+  text-align: left;
+  font-family: 'bold-poppins-font';
+  margin-left: 40px;
+  font-size: 50px;
+  padding-top: 10px;
+}
