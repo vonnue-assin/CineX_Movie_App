@@ -11,3 +11,18 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@font-face {
+  font-family: 'bold-poppins-font';
+  src: url('./assets/fonts/poppins.bold.ttf');
+}
+
+@font-face {
+  font-family: 'extraLight-poppins-font';
+  src: url('./assets/fonts/poppins.extralight.ttf');
+}
+
+@font-face {
+  font-family: 'regular-poppins-font';
+  src: url('./assets/fonts/poppins.light.ttf');
+}
