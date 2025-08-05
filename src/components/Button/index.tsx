@@ -2,13 +2,13 @@ import React, { ReactNode } from 'react';
 
 import './styles.css';
 
-interface ButtonProps {
+type ButtonProps = {
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   type?: 'button' | 'submit';
   className?: string;
   disabled?: boolean;
   children: ReactNode;
-}
+};
 
 const Button: React.FC<ButtonProps> = ({
   onClick,
