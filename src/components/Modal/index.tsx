@@ -17,7 +17,9 @@ const Modal: React.FC<ModalProps> = ({
   children,
   className,
 }) => {
-  if (!isOpen) return null;
+  if (!isOpen) {
+    return null;
+  }
 
   return (
     <div className="modal-overlay">
