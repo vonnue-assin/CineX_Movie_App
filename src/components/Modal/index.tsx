@@ -27,7 +27,7 @@ const Modal: React.FC<ModalProps> = ({
     <div className="modal-overlay">
       <div className={`modal-container ${className || ''}`}>
         <button className="modal-close-icon" onClick={onClose}>
-          <CloseIcon />
+          <CloseIcon width={'30px'} height={'30px'} />
         </button>
         {title && <h2>{title}</h2>}
         <div className="modal-content">{children}</div>
