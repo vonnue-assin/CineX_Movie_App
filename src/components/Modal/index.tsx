@@ -1,5 +1,7 @@
 import React, { ReactNode } from 'react';
 
+import { ReactComponent as CloseIcon } from '../../assets/svg/closeIcon.svg';
+
 import './styles.css';
 
 type ModalProps = {
@@ -23,12 +25,9 @@ const Modal: React.FC<ModalProps> = ({
 
   return (
     <div className="modal-overlay">
-      <div className={`modal ${className || ''}`}>
-        <button
-          className="modal-close-icon"
-          onClick={onClose}
-          aria-label="Close modal"
-        >
+      <div className={`modal-container ${className || ''}`}>
+        <button className="modal-close-icon" onClick={onClose}>
+          <CloseIcon />
           &times;
         </button>
         {title && <h2>{title}</h2>}

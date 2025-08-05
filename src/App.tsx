@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
 import { GetStarted } from './pages';
+
 import './App.css';
 
 const queryClient = new QueryClient();
@@ -14,7 +15,7 @@ const App = () => {
         <ToastContainer />
         <BrowserRouter>
           <Routes>
-            <Route path="./" element={<GetStarted />} />
+            <Route path="/" element={<GetStarted />} />
           </Routes>
         </BrowserRouter>
       </QueryClientProvider>
