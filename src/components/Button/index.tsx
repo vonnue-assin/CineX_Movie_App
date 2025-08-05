@@ -1,8 +1,8 @@
 import React, { ReactNode } from 'react';
 
-type ButtonVariant = 'primary' | 'secondary';
-
 import './styles.css';
+
+type ButtonVariant = 'primary' | 'secondary';
 
 interface ButtonProps {
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
@@ -21,7 +21,7 @@ const Button: React.FC<ButtonProps> = ({
   variant = 'primary',
   children,
 }) => {
-  const buttonClasses = `common-button ${variant}-button ${className}`;
+  const buttonClasses = `base-button ${variant}-button ${className}`;
 
   return (
     <button
