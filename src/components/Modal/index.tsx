@@ -28,7 +28,6 @@ const Modal: React.FC<ModalProps> = ({
       <div className={`modal-container ${className || ''}`}>
         <button className="modal-close-icon" onClick={onClose}>
           <CloseIcon />
-          &times;
         </button>
         {title && <h2>{title}</h2>}
         <div className="modal-content">{children}</div>
