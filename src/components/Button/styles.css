@@ -24,3 +24,23 @@
 .common-button:active {
   transform: scale(0.98);
 }
+
+.primary-button {
+  background-color: #d90429;
+  color: #fff;
+}
+
+.primary-button:hover {
+  background-color: #03045e;
+  color: #cccccc;
+}
+
+.secondary-button {
+  background-color: #540b0e;
+  color: #fff;
+}
+
+.secondary-button:hover {
+  background-color: #1b98e0;
+  color: #fff;
+}
