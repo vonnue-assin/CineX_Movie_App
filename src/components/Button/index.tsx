@@ -1,23 +1,29 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 import './styles.css';
 
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary';
-  children: React.ReactNode;
+interface ButtonProps {
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  type?: 'button' | 'submit';
+  className?: string;
+  disabled?: boolean;
+  children: ReactNode;
 }
 
 const Button: React.FC<ButtonProps> = ({
-  variant = 'primary',
-  children,
+  onClick,
+  type = 'button',
   className = '',
-  ...rest
+  disabled = false,
+  children,
 }) => {
-  const buttonClass = `button-${variant} common-button ${className}`.trim();
-
   return (
-    <button className={buttonClass} {...rest}>
+    <button
+      onClick={onClick}
+      type={type}
+      className={`common-button ${className}`}
+      disabled={disabled}
+    >
       {children}
     </button>
   );
