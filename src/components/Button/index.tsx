@@ -4,14 +4,14 @@ import './styles.css';
 
 type ButtonVariant = 'primary' | 'secondary';
 
-interface ButtonProps {
+type ButtonProps = {
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   type?: 'button' | 'submit';
   className?: string;
   disabled?: boolean;
   variant?: ButtonVariant;
   children: ReactNode;
-}
+};
 
 const Button: React.FC<ButtonProps> = ({
   onClick,
