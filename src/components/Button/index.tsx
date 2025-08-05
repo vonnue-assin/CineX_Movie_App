@@ -6,7 +6,7 @@ import './styles.css';
 
 interface ButtonProps {
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
-  type?: 'button' | 'submit' | 'reset';
+  type?: 'button' | 'submit';
   className?: string;
   disabled?: boolean;
   variant?: ButtonVariant;
