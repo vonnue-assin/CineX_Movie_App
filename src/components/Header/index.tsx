@@ -1,6 +1,7 @@
 import './styles.css';
-import { ReactComponent as MenuIcon } from '../../assets/svg/menuIcon.svg';
+
 import CineXIcon from '../../assets/images/CineXlogo.png';
+import { ReactComponent as MenuIcon } from '../../assets/svg/menuIcon.svg';
 
 const Header = () => {
   return (
