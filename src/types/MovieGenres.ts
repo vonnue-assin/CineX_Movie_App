@@ -1,5 +1,4 @@
-export type MovieGeneresListAPIResponse = {
+export type MovieGenre = {
   id: number;
   name: string;
-  genres: string[];
 };
