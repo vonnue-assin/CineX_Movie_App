@@ -12,8 +12,8 @@
 
 .cineX-logo-box {
   text-align: end;
-  margin-top: -80px;
-  margin-right: 20px;
+  margin-top: -85px;
+  margin-right: 10px;
 }
 
 .menuIcon {
@@ -21,4 +21,8 @@
   color: black;
   top: 2%;
   cursor: pointer;
+}
+
+.logo {
+  width: 60px;
 }

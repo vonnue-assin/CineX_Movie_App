@@ -1,5 +1,6 @@
 import './styles.css';
 import { ReactComponent as MenuIcon } from '../../assets/svg/menuIcon.svg';
+import CineXIcon from '../../assets/images/CineXlogo.png';
 
 const Header = () => {
   return (
@@ -8,7 +9,7 @@ const Header = () => {
         <MenuIcon width={'30px'} height={'30px'} />
       </div>
       <div className="cineX-logo-box">
-        <span className="cinex-logo">CineX</span>
+        <img src={CineXIcon} alt="cineXIcon" className="logo" />
       </div>
     </div>
   );
