@@ -19,6 +19,7 @@ export const MovieList = () => {
   return (
     <>
       <h2>Movie Lists</h2>
+
       <div className="movie-list-container">
         {movieList.map(movie => (
           <MovieListCard key={movie.id} {...movie} />
