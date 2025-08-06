@@ -1,0 +1,24 @@
+.header-body {
+  padding: 20px;
+  color: #f8f7ff;
+  margin-top: 70px;
+}
+
+.cinex-logo {
+  color: #bf0603;
+  font-size: 40px;
+  font-family: 'bold-poppins-font';
+}
+
+.cineX-logo-box {
+  text-align: end;
+  margin-top: -80px;
+  margin-right: 20px;
+}
+
+.menuIcon {
+  position: absolute;
+  color: black;
+  top: 2%;
+  cursor: pointer;
+}
