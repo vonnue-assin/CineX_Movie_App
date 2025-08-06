@@ -42,17 +42,17 @@ export const MovieListCard: React.FC<MovieListCardProps> = ({
       {poster_path && (
         <img
           src={`https://image.tmdb.org/t/p/w500${poster_path}`}
-          alt={title}
+          alt={`${title} poster`}
         />
       )}
       {backdrop_path && (
         <img
           src={`https://image.tmdb.org/t/p/w1280${backdrop_path}`}
-          alt={title}
+          alt={`${title} backdrop`}
         />
       )}
 
-      {video && <p>Video Available</p>}
+      {video && <p>🎬 Video Available</p>}
     </div>
   );
 };
