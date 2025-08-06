@@ -1,4 +1,4 @@
-import { useGetMovieGenres } from '../../apis/Movie/useGetMovieGenres';
+import { useGetMovieGenres } from '../../apis/Movie';
 import { MovieGenersCard } from '../MovieGenersCard';
 
 export const MovieGenersList = () => {
