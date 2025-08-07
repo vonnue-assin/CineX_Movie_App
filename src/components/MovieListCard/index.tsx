@@ -30,29 +30,30 @@ export const MovieListCard: React.FC<MovieListCardProps> = ({
   vote_count,
 }) => {
   return (
-    <div className="movieGenre-details-card">
-      <h2>{original_title}</h2>
-      <p>Original Language: {original_language}</p>
-      <p>
-        Rating: {vote_average} ({vote_count} votes)
-      </p>
-      <p>Release Date: {release_date}</p>
-      <p>Popularity: {popularity}</p>
+    <div>
+      <div className="movieList-details-card">
+        <h2>{original_title}</h2>
+        <p>Original Language: {original_language}</p>
+        <p>Rating: {vote_average}</p>
+        <p>VoteCount:({vote_count} votes)</p>
+        <p>Release Date: {release_date}</p>
+        <p>Popularity: {popularity}</p>
 
-      {poster_path && (
-        <img
-          src={`https://image.tmdb.org/t/p/w500${poster_path}`}
-          alt={`${title} poster`}
-        />
-      )}
-      {backdrop_path && (
-        <img
-          src={`https://image.tmdb.org/t/p/w1280${backdrop_path}`}
-          alt={`${title} backdrop`}
-        />
-      )}
+        {poster_path && (
+          <img
+            src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+            alt={`${title} poster`}
+          />
+        )}
+        {backdrop_path && (
+          <img
+            src={`https://image.tmdb.org/t/p/w1280${backdrop_path}`}
+            alt={`${title} backdrop`}
+          />
+        )}
 
-      {video && <p>🎬 Video Available</p>}
+        {video && <p>🎬 Video Available</p>}
+      </div>
     </div>
   );
 };
