@@ -1,7 +1,7 @@
 .signIn-body {
   background-image: linear-gradient(
       to top,
-      rgba(0, 0, 0, 0.7),
+      rgba(0, 0, 0, 0.8),
       rgba(17, 17, 17, 0.6)
     ),
     url('../../assets/images/CineX.jpg');
@@ -35,11 +35,11 @@
   flex-direction: column;
   align-items: center;
   justify-items: center;
-  padding-top: 65px;
+  padding-top: 100px;
 }
 
 .logo {
-  margin-top: -60px;
+  margin-top: 0px;
   color: red;
   text-align: left;
   font-family: 'bold-poppins-font';
