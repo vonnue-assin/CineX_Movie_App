@@ -1,12 +1,9 @@
-import { MovieGenersList } from '../../components/MovieGenersList';
-import Header from '../../components/Header';
-import { toast } from 'react-toastify';
+import { NowPlayingMovieLists } from '../../components/NowPlayingMovieLists';
 
 export const Home = () => {
   return (
     <>
-      <Header onMenuClick={() => toast.success('See the movie geners')} />
-      <MovieGenersList />
+      <NowPlayingMovieLists />
     </>
   );
 };
