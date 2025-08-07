@@ -3,13 +3,17 @@ import CineXIcon from '../../assets/images/CineXlogo.png';
 import { ReactComponent as MenuIcon } from '../../assets/svg/menuIcon.svg';
 
 type HeaderProps = {
-  onMenuClick: () => void;  
+  onMenuClick: () => void;
 };
 
 const Header = ({ onMenuClick }: HeaderProps) => {
   return (
     <div className="header-body">
-      <div className="menuIcon" onClick={onMenuClick} style={{ cursor: 'pointer' }}>
+      <div
+        className="menuIcon"
+        onClick={onMenuClick}
+        style={{ cursor: 'pointer' }}
+      >
         <MenuIcon width={'30px'} height={'30px'} />
       </div>
       <div className="cineX-logo-box">
