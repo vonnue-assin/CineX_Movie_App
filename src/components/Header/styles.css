@@ -1,6 +1,5 @@
 .header-body {
-  padding: 20px;
-  color: #f8f7ff;
+  background-color: #f8f7ff;
   margin-top: 70px;
 }
 
@@ -12,14 +11,14 @@
 
 .cineX-logo-box {
   text-align: end;
-  margin-top: -85px;
+  margin-top: -69px;
   margin-right: 10px;
 }
 
 .menuIcon {
   position: absolute;
   color: black;
-  top: 2%;
+  top: 1%;
   cursor: pointer;
 }
 
