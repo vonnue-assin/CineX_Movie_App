@@ -19,9 +19,7 @@ export const MovieList = () => {
 
   return (
     <>
-      <h2 className="now-playing-movie-lists-title">
-        Enjoy and Explore....
-      </h2>
+      <h2 className="now-playing-movie-lists-title">Enjoy and Explore....</h2>
       <div className="now-playing-movie-container">
         <div className="now-playing-movie-list-container">
           {movies.map(movie => (

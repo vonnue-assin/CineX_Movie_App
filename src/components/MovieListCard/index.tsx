@@ -1,7 +1,5 @@
 import React from 'react';
-
 import { StarRating } from '../StarRating';
-
 import './styles.css';
 
 type MovieListCardProps = {
@@ -32,12 +30,22 @@ export const MovieListCard: React.FC<MovieListCardProps> = ({
       <div className="movie-images-scroller">
         {poster_path && (
           <div className="movie-image-card">
-            <img
-              className="movie-image"
-              src={`https://image.tmdb.org/t/p/w500${poster_path}`}
-              alt={`${title} poster`}
-            />
-            <StarRating rating={vote_average} />
+            <div className="flip-wrapper">
+              <div className="flip-inner">
+                <div className="flip-front">
+                  <img
+                    className="movie-image"
+                    src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+                    alt={`${title} poster`}
+                  />
+                  <StarRating rating={vote_average} />
+                </div>
+
+                <div className="flip-back">
+                  <p className="movie-overview">{overview}</p>
+                </div>
+              </div>
+            </div>
           </div>
         )}
 
@@ -54,7 +62,6 @@ export const MovieListCard: React.FC<MovieListCardProps> = ({
 
       <div className="movieList-details-card">
         <h2 className="original-movie-title">{original_title}</h2>
-        <p>{overview}</p>
         <p>Original Language: {original_language}</p>
         <p>Release Date: {release_date}</p>
         {video && <p>🎬 Video Available</p>}

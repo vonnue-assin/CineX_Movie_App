@@ -102,3 +102,58 @@
 .star-rating span {
   font-size: 1.2rem;
 }
+
+.flip-wrapper {
+  perspective: 1000px;
+  width: 250px;
+  height: 375px;
+}
+
+.flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.flip-wrapper:hover .flip-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-front,
+.flip-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.flip-front {
+  background: #fff;
+  z-index: 2;
+}
+
+.flip-back {
+  background: #1c1c1c;
+  color: white;
+  transform: rotateY(180deg);
+  padding: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.movie-overview {
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.movie-image {
+  width: 100%;
+  height: auto;
+  border-radius: 10px 10px 0 0;
+}
