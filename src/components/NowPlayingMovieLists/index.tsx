@@ -1,5 +1,6 @@
-import { useGetNowPlayingMovies } from '../../apis/movie';
 import { toast } from 'react-toastify';
+
+import { useGetNowPlayingMovies } from '../../apis/movie';
 import { NowPlayingMovieCard } from '../NowPlayingMovieCard';
 
 import './styles.css';
@@ -18,7 +19,9 @@ export const NowPlayingMovieLists = () => {
 
   return (
     <>
-      <h2 className='now-playing-movie-lists-title'>Now Playing Movie Lists...</h2>
+      <h2 className="now-playing-movie-lists-title">
+        Now Playing Movie Lists...
+      </h2>
       <div className="now-playing-movie-container">
         <div className="now-playing-movie-list-container">
           {movies.map(movie => (
