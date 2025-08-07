@@ -1,12 +1,11 @@
-import { MovieGenersList } from '../../components/MovieGenersList';
 import Header from '../../components/Header';
-import { toast } from 'react-toastify';
+import { PopularPeopleList } from '../../components/PopularPeopleList';
 
 export const Home = () => {
   return (
     <>
       <Header />
-      <MovieGenersList />
+      <PopularPeopleList />
     </>
   );
 };
