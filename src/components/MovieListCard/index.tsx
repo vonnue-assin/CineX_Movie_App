@@ -1,5 +1,9 @@
 import React from 'react';
 
+import { StarRating } from '../StarRating';
+
+import './styles.css';
+
 type MovieListCardProps = {
   adult: boolean;
   backdrop_path: string | null;
@@ -17,27 +21,6 @@ type MovieListCardProps = {
   vote_count: number;
 };
 
-const StarRating: React.FC<{ rating: number }> = ({ rating }) => {
-  const starsTotal = 5;
-  const filledStars = Math.round(rating / 2);
-  const emptyStars = starsTotal - filledStars;
-
-  return (
-    <div>
-      {Array.from({ length: filledStars }, (_, i) => (
-        <span key={`filled-${i}`} style={{ color: '#FFD700' }}>
-          ★
-        </span>
-      ))}
-      {Array.from({ length: emptyStars }, (_, i) => (
-        <span key={`empty-${i}`} style={{ color: '#ccc' }}>
-          ☆
-        </span>
-      ))}
-    </div>
-  );
-};
-
 export const MovieListCard: React.FC<MovieListCardProps> = ({
   backdrop_path,
   original_language,
@@ -51,30 +34,35 @@ export const MovieListCard: React.FC<MovieListCardProps> = ({
   vote_count,
 }) => {
   return (
-    <div>
-      <div className="movieList-details-card">
-        <h2>{original_title}</h2>
-        <p>Original Language: {original_language}</p>
-        <p>
-          Rating: <StarRating rating={vote_average} />
-        </p>
-        <p>Vote Count: ({vote_count} votes)</p>
-        <p>Release Date: {release_date}</p>
-        <p>Popularity: {popularity}</p>
-
+    <div className="movieList-details-container">
+      <div className="movie-images-scroller">
         {poster_path && (
-          <img
-            src={`https://image.tmdb.org/t/p/w500${poster_path}`}
-            alt={`${title} poster`}
-          />
-        )}
-        {backdrop_path && (
-          <img
-            src={`https://image.tmdb.org/t/p/w1280${backdrop_path}`}
-            alt={`${title} backdrop`}
-          />
+          <div className="movie-image-card">
+            <img
+              className="movie-image"
+              src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+              alt={`${title} poster`}
+            />
+            <StarRating rating={vote_average} />
+          </div>
         )}
 
+        {backdrop_path && (
+          <div className="movie-image-card">
+            <img
+              className="movie-image-backdrop"
+              src={`https://image.tmdb.org/t/p/w1280${backdrop_path}`}
+              alt={`${title} backdrop`}
+            />
+          </div>
+        )}
+      </div>
+
+      <div className="movieList-details-card">
+        <h2 className="original-movie-title">{original_title}</h2>
+        <p></p>
+        <p>Original Language: {original_language}</p>
+        <p>Release Date: {release_date}</p>
         {video && <p>🎬 Video Available</p>}
       </div>
     </div>
