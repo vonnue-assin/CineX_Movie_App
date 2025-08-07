@@ -42,6 +42,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 15px;
   box-sizing: border-box;
+  height: 879px;
 }
 
 .movie-images-scroller {
