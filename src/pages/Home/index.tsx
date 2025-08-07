@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 export const Home = () => {
   return (
     <>
-      <Header onMenuClick={() => toast.success('See the movie geners')} />
+      <Header />
       <MovieGenersList />
     </>
   );
