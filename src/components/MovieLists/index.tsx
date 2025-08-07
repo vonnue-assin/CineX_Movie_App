@@ -1,6 +1,6 @@
 import { toast } from 'react-toastify';
 
-import { useGetMovieList } from '../../apis/Movie';
+import { useGetMovieList } from '../../apis/movie';
 import { MovieListCard } from '../MovieListCard';
 
 import './styles.css';
