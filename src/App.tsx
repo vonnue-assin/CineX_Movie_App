@@ -3,9 +3,9 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
 import { GetStarted, Home } from './pages';
+import { routes } from './routes';
 
 import './App.css';
-import { routes } from './routes';
 
 const queryClient = new QueryClient();
 

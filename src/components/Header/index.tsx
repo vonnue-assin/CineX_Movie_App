@@ -1,7 +1,10 @@
 import './styles.css';
-
 import CineXIcon from '../../assets/images/CineXlogo.png';
 import { ReactComponent as MenuIcon } from '../../assets/svg/menuIcon.svg';
+
+type HeaderProps = {
+  onMenuClick: () => void;
+};
 
 const Header = () => {
   return (
