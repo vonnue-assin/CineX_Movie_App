@@ -1,31 +1,22 @@
-import { toast } from 'react-toastify';
+import React from 'react';
 
-import { useGetMovieGenres } from '../../apis/movie/useGetMovieGenres';
+import { MovieGenre } from '../../types/MovieGenres';
 import { MovieGenersCard } from '../MovieGenersCard';
 
-export const MovieGenersList = () => {
-  const { data: movies, isLoading, isError } = useGetMovieGenres();
+type MovieGenresListProps = {
+  genres: MovieGenre[];
+};
 
-  if (isLoading) {
-    toast.success('Loading genres...');
-  }
-
-  if (isError) {
-    toast.error('Failed to load genres.Plese try again later...');
-  }
-
-  if (!movies || movies.length === 0) {
-    return <p>No genres available.</p>;
-  }
-
+export const MovieGenresList: React.FC<MovieGenresListProps> = ({ genres }) => {
   return (
-    <>
-      <h2>Trending Movie Genres..</h2>
-      <div>
-        {movies.map(movie => (
-          <MovieGenersCard key={movie.id} id={movie.id} name={movie.name} />
-        ))}
-      </div>
-    </>
+    <div className="genres-container">
+      {genres.length > 0 ? (
+        genres.map(genre => (
+          <MovieGenersCard key={genre.id} name={genre.name} />
+        ))
+      ) : (
+        <p>No genres available.</p>
+      )}
+    </div>
   );
 };
