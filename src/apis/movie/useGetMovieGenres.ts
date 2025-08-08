@@ -1,9 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
 
-import { DataQueryKeys } from './data-query-keys';
+import { DataQueryKeys } from '../data-query-keys';
 import { MovieGenre } from '../../types/MovieGenres';
-import httpClient from './httpClient';
-import { endPoints } from './endPoints';
+import httpClient from '../httpClient';
+import { endPoints } from '../endPoints';
 
 export const useGetMovieGenres = () => {
   return useQuery<MovieGenre[]>({
