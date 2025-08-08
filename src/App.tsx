@@ -6,6 +6,7 @@ import { GetStarted, Home } from './pages';
 
 import './App.css';
 import { routes } from './routes';
+import { PopularPeople } from './pages/PopularPeople';
 
 const queryClient = new QueryClient();
 
@@ -18,6 +19,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<GetStarted />} />
             <Route path={routes.home} element={<Home />} />
+            <Route path={routes.popularPeople} element={<PopularPeople />} />
           </Routes>
         </BrowserRouter>
       </QueryClientProvider>

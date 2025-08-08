@@ -1,0 +1,40 @@
+.person-card-container {
+  background-color: black;
+  border-radius: 12px;
+  box-shadow: 1px 4px 10px rgba(1, 2, 3, 4);
+  width: 333px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease;
+}
+
+.person-card-container:hover {
+  transform: scale(1.03);
+}
+
+.person-header {
+  display: flex;
+  padding: 1rem;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.person-profile-image {
+  width: 80px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-right: 1rem;
+}
+
+.person-info h2 {
+  font-size: 1.25rem;
+  margin: 0;
+  color: #fff;
+}
+
+.person-info p {
+  margin: 10px 0;
+  font-size: 0.9rem;
+  color: #fff;
+}
