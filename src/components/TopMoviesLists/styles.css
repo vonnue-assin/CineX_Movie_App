@@ -1,0 +1,21 @@
+.now-playing-movies-title {
+  color: red;
+}
+
+.now-playing-movie-list-container {
+  display: flex;
+  gap: 35px;
+  margin-top: 20px;
+  padding: 20px;
+}
+
+.now-playing-movie-lists-title {
+  color: #fff;
+  font-family: 'bold-poppins-font';
+  text-align: start;
+  margin-left: 40px;
+}
+
+.star-rating {
+  margin-top: -23px;
+}
