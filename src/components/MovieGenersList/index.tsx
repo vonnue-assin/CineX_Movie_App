@@ -1,29 +1,22 @@
-import { useGetMovieGenres } from '../../apis/movie';
+import React from 'react';
+
+import { MovieGenre } from '../../types/MovieGenres';
 import { MovieGenersCard } from '../MovieGenersCard';
 
-export const MovieGenersList = () => {
-  const { data: movies, isLoading, isError } = useGetMovieGenres();
+type MovieGenresListProps = {
+  genres: MovieGenre[];
+};
 
-  if (isLoading) {
-    return <p>Loading genres...</p>;
-  }
-
-  if (isError) {
-    return <p>Failed to load genres. Please try again later.</p>;
-  }
-
-  if (!movies || movies.length === 0) {
-    return <p>No genres available.</p>;
-  }
-
+export const MovieGenresList: React.FC<MovieGenresListProps> = ({ genres }) => {
   return (
-    <>
-      <h2>Trending Movie Genres..</h2>
-      <div>
-        {movies.map(movie => (
-          <MovieGenersCard key={movie.id} id={movie.id} name={movie.name} />
-        ))}
-      </div>
-    </>
+    <div className="genres-container">
+      {genres.length > 0 ? (
+        genres.map(genre => (
+          <MovieGenersCard key={genre.id} name={genre.name} />
+        ))
+      ) : (
+        <p>No genres available.</p>
+      )}
+    </div>
   );
 };
