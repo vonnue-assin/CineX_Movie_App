@@ -26,7 +26,7 @@ export const PopularPeopleList = () => {
 
   return (
     <>
-      <button className="home-page">
+      <button className="home-page-button">
         <Link
           to={routes.home}
           style={{

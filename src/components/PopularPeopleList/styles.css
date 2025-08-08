@@ -23,7 +23,7 @@
   padding-bottom: 50px;
 }
 
-.home-page {
+.home-page-button {
   padding: 10px 20px;
   background-color: #c1121f;
   border-radius: 5px;
@@ -31,5 +31,4 @@
   right: 85px;
   top: 4px;
   border: none;
-
 }
