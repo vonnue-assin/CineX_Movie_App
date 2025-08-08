@@ -1,9 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
 
 import { APIResponse } from '../../types/MovieList';
-import httpClient from './httpClient';
-import { endPoints } from './endPoints';
-import { DataQueryKeys } from './data-query-keys';
+import httpClient from '../httpClient';
+import { endPoints } from '../endPoints';
+import { DataQueryKeys } from '../data-query-keys';
 
 export const useGetMovieList = () => {
   return useQuery({
