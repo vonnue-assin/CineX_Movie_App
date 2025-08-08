@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
-import CineXIcon from '../../assets/images/CineXlogo.png';
-import { ReactComponent as MenuIcon } from '../../assets/svg/menuIcon.svg';
+import { useState } from 'react';
 
 import { useGetMovieGenres } from '../../apis/movie/useGetMovieGenres';
-import { MovieGenersCard } from '../MovieGenersCard';
+import { MovieGenresList } from '../MovieGenersList';
+
+import CineXIcon from '../../assets/images/CineXlogo.png';
+import { ReactComponent as MenuIcon } from '../../assets/svg/menuIcon.svg';
 
 import './styles.css';
 
@@ -27,18 +28,11 @@ const Header = () => {
       </div>
 
       {showGenres && (
-        <div className="genres-container">
+        <>
           {isLoading && <p>Loading genres...</p>}
           {isError && <p>Failed to load genres. Please try again later.</p>}
-          {!isLoading && !isError && (genres ?? []).length > 0 && (
-            (genres ?? []).map(genre => (
-              <MovieGenersCard key={genre.id} id={genre.id} name={genre.name} />
-            ))
-          )}
-          {!isLoading && !isError && (genres ?? []).length === 0 && (
-            <p>No genres available.</p>
-          )}
-        </div>
+          {!isLoading && !isError && <MovieGenresList genres={genres ?? []} />}
+        </>
       )}
     </div>
   );
