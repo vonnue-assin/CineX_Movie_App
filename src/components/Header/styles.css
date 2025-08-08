@@ -25,3 +25,43 @@
 .logo {
   width: 60px;
 }
+
+.header-wrapper {
+  position: relative;
+}
+
+.menuIcon {
+  cursor: pointer;
+}
+
+.cineX-logo-box .logo {
+  height: 40px;
+}
+
+.genres-container {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  background-color: #fff;
+  width: 200px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  padding: 10px;
+}
+
+.movieGenre-details-card {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.movieGenre-details-card h2 {
+  font-size: 14px;
+  color: #888;
+  margin: 0;
+}
+
+.movieGenre-details-card p {
+  margin: 4px 0 0;
+  font-weight: bold;
+  color: #333;
+}
