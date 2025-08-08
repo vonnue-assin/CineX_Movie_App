@@ -26,6 +26,16 @@ code {
     monospace;
 }
 
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
 @font-face {
   font-family: 'bold-poppins-font';
   src: url('./assets/fonts/poppins.bold.ttf');

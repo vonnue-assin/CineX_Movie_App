@@ -2,7 +2,7 @@ import { GetSignIn } from '../../components/GetStarted';
 
 import './styles.css';
 
-const SignIn = () => {
+export const GetStarted = () => {
   return (
     <div className="signIn-body">
       <h1 className="logo">CineX</h1>
@@ -17,5 +17,3 @@ const SignIn = () => {
     </div>
   );
 };
-
-export default SignIn;
