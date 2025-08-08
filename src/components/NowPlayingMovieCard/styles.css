@@ -1,16 +1,105 @@
-.movieList-details-container {
+.original-movie-title {
+  font-size: 30px;
+  color: red;
+}
+
+.now-playing-movie-lists-title {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 2rem;
+  color: #333;
+}
+
+.now-playing-movie-container {
+  margin: 0 auto;
+  padding: 0 15px;
+  max-width: 1780px;
+}
+
+.now-playing-movie-list-container {
   display: flex;
-  flex-direction: column;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 20px;
   gap: 20px;
-  padding: 20px;
-  background-color: #f5f5f5;
+}
+
+.now-playing-movie-list-container::-webkit-scrollbar {
+  display: none;
+}
+
+.now-playing-movie-list-container {
+  scrollbar-width: none;
+}
+
+.movieList-details-container {
+  flex-shrink: 0;
+  width: 300px;
+  scroll-snap-align: start;
+  background-color: black;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  box-sizing: border-box;
 }
 
 .movie-images-scroller {
   display: flex;
-  gap: 20px;
   overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  gap: 10px;
   padding-bottom: 10px;
+}
+
+.movie-images-scroller::-webkit-scrollbar {
+  display: none;
+}
+
+.movie-images-scroller {
+  scrollbar-width: none;
+}
+
+.movie-image-card {
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  width: 260px;
+}
+
+.movie-image {
+  width: 104%;
+  height: 100%;
+  display: block;
+  border-radius: 8px;
+}
+
+.movie-image-backdrop {
+  width: 200%;
+  height: 97%;
+  display: block;
+  border-radius: 8px;
+}
+
+.movieList-details-card {
+  margin-top: 15px;
+  line-height: 1.6;
+}
+
+.original-movie-title {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  color: red;
+}
+
+.movieList-details-card p {
+  font-size: 0.9rem;
+  color: #fff;
+  margin-bottom: 5px;
+}
+
+.star-rating span {
+  font-size: 1.2rem;
 }
 
 .flip-wrapper {
@@ -23,7 +112,7 @@
   position: relative;
   width: 100%;
   height: 100%;
-  transition: transform 0.6s ease;
+  transition: transform 0.6s;
   transform-style: preserve-3d;
 }
 
@@ -39,7 +128,6 @@
   backface-visibility: hidden;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .flip-front {
@@ -49,46 +137,22 @@
 
 .flip-back {
   background: #1c1c1c;
-  color: #fff;
+  color: white;
   transform: rotateY(180deg);
-  padding: 15px;
+  padding: 1em;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
 }
 
+.movie-overview {
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
 .movie-image {
   width: 100%;
   height: auto;
-  display: block;
   border-radius: 10px 10px 0 0;
-}
-
-.movie-image-backdrop {
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
-}
-
-.flip-front .StarRating {
-  margin-top: 8px;
-}
-
-.movie-overview {
-  font-size: 0.9rem;
-  line-height: 1.5;
-  padding: 0 5px;
-}
-
-.movieList-details-card {
-  background: #fff;
-  border-radius: 10px;
-  padding: 15px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.original-movie-title {
-  margin-bottom: 10px;
-  color: #333;
 }
