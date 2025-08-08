@@ -1,8 +1,8 @@
 .person-card-container {
-  background-color: #fff;
+  background-color: black;
   border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  width: 300px;
+  box-shadow: 1px 4px 10px rgba(1, 2, 3, 4);
+  width: 333px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -30,66 +30,11 @@
 .person-info h2 {
   font-size: 1.25rem;
   margin: 0;
-  color: #222;
+  color: #fff;
 }
 
 .person-info p {
-  margin: 4px 0;
+  margin: 10px 0;
   font-size: 0.9rem;
-  color: #666;
-}
-
-.known-for-movies {
-  padding: 1rem;
-}
-
-.known-for-movies h3 {
-  font-size: 1rem;
-  margin-bottom: 0.5rem;
-  color: #444;
-}
-
-.movie-images-scroller {
-  display: flex;
-  gap: 1rem;
-  overflow-x: auto;
-  padding-bottom: 0.5rem;
-}
-
-.movie-image-card {
-  min-width: 120px;
-  flex-shrink: 0;
-}
-
-.movie-image {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 6px;
-}
-
-.movie-info {
-  margin-top: 0.5rem;
-}
-
-.movie-title {
-  font-weight: bold;
-  font-size: 0.9rem;
-  margin: 0;
-  color: #333;
-}
-
-.movie-info p {
-  margin: 2px 0;
-  font-size: 0.8rem;
-  color: #555;
-}
-
-.movie-images-scroller::-webkit-scrollbar {
-  height: 6px;
-}
-
-.movie-images-scroller::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0.2);
-  border-radius: 4px;
+  color: #fff;
 }

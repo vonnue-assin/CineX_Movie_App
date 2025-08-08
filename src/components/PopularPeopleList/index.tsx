@@ -1,4 +1,3 @@
-import React from 'react';
 import { toast } from 'react-toastify';
 
 import { useGetPopularPeopleList } from '../../apis/movie';
@@ -25,9 +24,11 @@ export const PopularPeopleList = () => {
 
   return (
     <>
-      <h2 className="now-playing-movie-lists-title">Enjoy and Explore...</h2>
-      <div className="now-playing-movie-container">
-        <div className="now-playing-movie-list-container">
+      <h2 className="popular-people-lists-title">
+        Your favourite Artists..
+      </h2>
+      <div className="popular-people-container">
+        <div className="popular-people-list-container">
           {people.map(person => (
             <PopularPeopleCard key={person.id} person={person} />
           ))}

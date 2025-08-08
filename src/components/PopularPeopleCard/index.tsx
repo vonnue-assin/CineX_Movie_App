@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { PopularPeople, KnownForMovie } from '../../types/PopularPeople';
+import { PopularPeople } from '../../types/PopularPeople';
+import { KnownForMoviesLists } from '../KnownForMoviesLists.tsx';
 
 import './styles.css';
 
@@ -30,26 +31,7 @@ export const PopularPeopleCard: React.FC<PopularPersonCardProps> = ({
 
       <div className="known-for-movies">
         <h3>Known For:</h3>
-        <div className="movie-images-scroller">
-          {person.known_for.map((movie: KnownForMovie) => (
-            <div key={movie.id} className="movie-image-card">
-              {movie.poster_path && (
-                <img
-                  className="movie-image"
-                  src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                  alt={`${movie.title} poster`}
-                />
-              )}
-              <div className="movie-info">
-                <p className="movie-title">
-                  {movie.title || movie.original_title}
-                </p>
-                <p>Release: {movie.release_date}</p>
-                <p>Rating: ⭐ {movie.vote_average}</p>
-              </div>
-            </div>
-          ))}
-        </div>
+        <KnownForMoviesLists movies={person.known_for} />
       </div>
     </div>
   );
