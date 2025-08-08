@@ -19,7 +19,9 @@ export const TopMovieList = () => {
 
   return (
     <>
-      <h2 className="now-playing-movie-lists-title">Explore the Top Rated Movies..</h2>
+      <h2 className="now-playing-movie-lists-title">
+        Explore the Top Rated Movies..
+      </h2>
       <div className="now-playing-movie-container">
         <div className="now-playing-movie-list-container">
           {movies.map(movie => (
