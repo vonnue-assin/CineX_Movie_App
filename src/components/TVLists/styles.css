@@ -1,13 +1,17 @@
-.tv-lists-title {
-  color: #fff;
-  text-align: start;
-  font-size: 30px;
-  margin-left: 30px;
-}
-
 .tv-list-container {
   display: flex;
   gap: 35px;
   margin-top: 20px;
-  padding: 20px;
+  padding-left: 20px;
+}
+
+.tv-lists-title {
+  color: #fff;
+  font-family: 'bold-poppins-font';
+  text-align: start;
+  margin-left: 20px;
+}
+
+.star-rating {
+  margin-top: -23px;
 }

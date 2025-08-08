@@ -6,12 +6,6 @@
 }
 
 .tv-container {
-  margin: 0 auto;
-  padding: 0 15px;
-  max-width: 1780px;
-}
-
-.tv-movie-list-container {
   display: flex;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
@@ -20,7 +14,7 @@
   gap: 20px;
 }
 
-.tv-list-container::-webkit-scrollbar {
+.tv-container::-webkit-scrollbar {
   display: none;
 }
 
