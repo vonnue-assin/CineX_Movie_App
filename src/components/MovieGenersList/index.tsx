@@ -1,3 +1,5 @@
+import { toast } from 'react-toastify';
+
 import { useGetMovieGenres } from '../../apis/movie/useGetMovieGenres';
 import { MovieGenersCard } from '../MovieGenersCard';
 
@@ -5,11 +7,11 @@ export const MovieGenersList = () => {
   const { data: movies, isLoading, isError } = useGetMovieGenres();
 
   if (isLoading) {
-    return <p>Loading genres...</p>;
+    toast.success('Loading genres...');
   }
 
   if (isError) {
-    return <p>Failed to load genres. Please try again later.</p>;
+    toast.error('Failed to load genres.Plese try again later...');
   }
 
   if (!movies || movies.length === 0) {
