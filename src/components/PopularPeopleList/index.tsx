@@ -4,6 +4,8 @@ import { useGetPopularPeopleList } from '../../apis/movie';
 import { PopularPeopleCard } from '../PopularPeopleCard';
 
 import './styles.css';
+import { Link } from 'react-router-dom';
+import { routes } from '../../routes';
 
 export const PopularPeopleList = () => {
   const { data: people, isLoading, isError } = useGetPopularPeopleList();
@@ -24,9 +26,21 @@ export const PopularPeopleList = () => {
 
   return (
     <>
-      <h2 className="popular-people-lists-title">
-        Your favourite Artists..
-      </h2>
+      <button className="home-page">
+        <Link
+          to={routes.home}
+          style={{
+            color: '#fff',
+            textDecoration: 'none',
+            fontSize: '18px',
+            fontFamily: 'bold-poppins-font',
+          }}
+        >
+          <span> ←</span> Home
+        </Link>
+      </button>
+
+      <h2 className="popular-people-lists-title">Your favourite Artists..</h2>
       <div className="popular-people-container">
         <div className="popular-people-list-container">
           {people.map(person => (
