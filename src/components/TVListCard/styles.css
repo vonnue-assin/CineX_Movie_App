@@ -1,0 +1,153 @@
+.tv-lists-title {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 2rem;
+  color: #333;
+}
+
+.tv-container {
+  margin: 0 auto;
+  padding: 0 15px;
+  max-width: 1780px;
+}
+
+.tv-movie-list-container {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 20px;
+  gap: 20px;
+}
+
+.tv-list-container::-webkit-scrollbar {
+  display: none;
+}
+
+.tv-movie-list-container {
+  scrollbar-width: none;
+}
+
+.TV-details-container {
+  flex-shrink: 0;
+  width: 300px;
+  scroll-snap-align: start;
+  background-color: black;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+.tv-images-scroller {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  gap: 10px;
+  padding-bottom: 10px;
+}
+
+.tv-images-scroller::-webkit-scrollbar {
+  display: none;
+}
+
+.tv-images-scroller {
+  scrollbar-width: none;
+}
+
+.tv-image-card {
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  width: 260px;
+}
+
+.tv-image {
+  width: 104%;
+  height: 100%;
+  display: block;
+  border-radius: 8px;
+}
+
+.tv-image-backdrop {
+  width: 200%;
+  height: 97%;
+  display: block;
+  border-radius: 8px;
+}
+
+.TVList-details-card {
+  margin-top: 15px;
+  line-height: 1.6;
+}
+
+.original-tv-title {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  color: red;
+}
+
+.TVList-details-card p {
+  font-size: 0.9rem;
+  color: #fff;
+  margin-bottom: 5px;
+}
+
+.star-rating span {
+  font-size: 1.2rem;
+}
+
+.flip-wrapper {
+  perspective: 1000px;
+  width: 250px;
+  height: 375px;
+}
+
+.flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.flip-wrapper:hover .flip-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-front,
+.flip-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.flip-front {
+  background: #fff;
+  z-index: 2;
+}
+
+.flip-back {
+  background: #1c1c1c;
+  color: white;
+  transform: rotateY(180deg);
+  padding: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.tv-overview {
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.tv-image {
+  width: 100%;
+  height: auto;
+  border-radius: 10px 10px 0 0;
+}

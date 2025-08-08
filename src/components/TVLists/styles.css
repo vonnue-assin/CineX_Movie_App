@@ -1,0 +1,13 @@
+.tv-lists-title {
+  color: #fff;
+  text-align: start;
+  font-size: 30px;
+  margin-left: 30px;
+}
+
+.tv-list-container {
+  display: flex;
+  gap: 35px;
+  margin-top: 20px;
+  padding: 20px;
+}
