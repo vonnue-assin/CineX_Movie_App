@@ -28,11 +28,20 @@ export const TopMovieCard: React.FC<TopMovieCardprops> = ({
       <div className="movie-images-scroller">
         {poster_path && (
           <div className="movie-image-card">
-            <img
-              className="movie-image"
-              src={`https://image.tmdb.org/t/p/w500${poster_path}`}
-              alt={`${title} poster`}
-            />
+            <div className="flip-wrapper">
+              <div className="flip-inner">
+                <div className="flip-front">
+                  <img
+                    className="movie-image"
+                    src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+                    alt={`${title} poster`}
+                  />
+                </div>
+                <div className="flip-back">
+                  <p className="movie-overview">{overview}</p>
+                </div>
+              </div>
+            </div>
           </div>
         )}
 
@@ -51,11 +60,9 @@ export const TopMovieCard: React.FC<TopMovieCardprops> = ({
         <h2 className="original-movie-title">{original_title}</h2>
         <p></p>
         <p>Original Language: {original_language}</p>
-        <p>Overview:{overview}</p>
         <p>Release Date: {release_date}</p>
         {video && <p>🎬 Video Available</p>}
       </div>
     </div>
   );
 };
-// the movie description should flip when hovered the movie image ....
