@@ -3,13 +3,6 @@
   color: red;
 }
 
-.now-playing-movie-lists-title {
-  text-align: center;
-  margin: 20px 0;
-  font-size: 2rem;
-  color: #333;
-}
-
 .now-playing-movie-container {
   margin: 0 auto;
   padding: 0 15px;
@@ -155,4 +148,9 @@
   width: 100%;
   height: auto;
   border-radius: 10px 10px 0 0;
+}
+
+.wishList_icon {
+  color: #fff;
+  cursor: pointer;
 }

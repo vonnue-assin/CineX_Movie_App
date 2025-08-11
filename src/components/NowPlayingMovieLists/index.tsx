@@ -25,7 +25,11 @@ export const NowPlayingMovieLists = () => {
       <div className="now-playing-movie-container">
         <div className="now-playing-movie-list-container">
           {movies.map(movie => (
-            <NowPlayingMovieCard key={movie.id} {...movie} />
+            <NowPlayingMovieCard
+              userId={22198483}
+              key={movie.id}
+              {...movie}
+            />
           ))}
         </div>
       </div>

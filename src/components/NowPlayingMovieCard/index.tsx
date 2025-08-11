@@ -1,5 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { toast } from 'react-toastify';
+
+import { useAddToWatchList } from '../../apis/movie/useAddMovieToWatchList';
 import { StarRating } from '../StarRating';
+
+import { ReactComponent as WatchList } from '../../assets/svg/watchList.svg';
+
 import './styles.css';
 
 type MovieListCardProps = {
@@ -13,6 +19,8 @@ type MovieListCardProps = {
   video: boolean;
   vote_average: number;
   vote_count: number;
+  id: number;
+  userId: number;
 };
 
 export const NowPlayingMovieCard: React.FC<MovieListCardProps> = ({
@@ -25,7 +33,25 @@ export const NowPlayingMovieCard: React.FC<MovieListCardProps> = ({
   video,
   vote_average,
   overview,
+  id,
+  userId,
 }) => {
+  const [isWishlisted, setIsWatchlisted] = useState(false);
+
+  const { mutate: addToWatchlist } = useAddToWatchList();
+
+  const handleWatchlistClick = () => {
+    setIsWatchlisted(!isWishlisted);
+
+    addToWatchlist({ userId, id });
+
+    toast.success(
+      `Movie "${title}" ${
+        isWishlisted ? 'removed from' : 'saved to'
+      } watchlist`,
+    );
+  };
+
   return (
     <div className="movieList-details-container">
       <div className="movie-images-scroller">
@@ -60,8 +86,17 @@ export const NowPlayingMovieCard: React.FC<MovieListCardProps> = ({
           </div>
         )}
       </div>
-
       <div className="movieList-details-card">
+        <WatchList
+          width={'30px'}
+          height={'30px'}
+          style={{
+            color: isWishlisted ? 'red' : '#fff',
+            cursor: 'pointer',
+          }}
+          className="wishList_icon"
+          onClick={handleWatchlistClick}
+        />
         <h2 className="original-movie-title">{original_title}</h2>
         <p>Original Language: {original_language}</p>
         <p>Release Date: {release_date}</p>
