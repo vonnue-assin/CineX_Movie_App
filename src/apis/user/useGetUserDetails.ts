@@ -11,7 +11,7 @@ export const useGetUserDetails = () => {
     queryFn: async () => {
       const { data } = await httpClient.get(endPoints.getUserList());
 
-      return data.results ?? [];
+      return Array.isArray(data) ? data : [data];
     },
   });
 };

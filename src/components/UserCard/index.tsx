@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
+
+import UserIcon from '../../assets/images/user .png';
 
 import './styles.css';
 
@@ -11,14 +13,31 @@ type UsercardProps = {
   id: number;
 };
 
-export const UserCard: React.FC<UsercardProps> = ({ name, username }) => {
+export const UserCard: React.FC<UsercardProps> = ({ id, username }) => {
+  const [showDetails, setShowDetails] = useState(false);
+
+  const handleMouseEnter = () => {
+    setShowDetails(true);
+  };
+
+  const handleMouseLeave = () => {
+    setShowDetails(false);
+  };
+
   return (
-    <div className="user-card">
-      <div className="user-card-content">
-        <p className="user-card-greeting">Welcome Users</p>
-        <p className="user-card-username">{username}</p>
-        <p className="user-card-name">({name})</p>
-      </div>
+    <div
+      className="user-card"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      <img src={UserIcon} alt="User Icon" className="user-icon" />
+
+      {showDetails && (
+        <div className="user-card-details">
+          <p className="user-card-username">{username}</p>
+          <p className="user-card-id">ID: {id}</p>
+        </div>
+      )}
     </div>
   );
 };
