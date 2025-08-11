@@ -1,22 +1,11 @@
 import React from 'react';
 
+import { TVShow } from '../../types/TVShow';
 import { StarRating } from '../StarRating';
 
 import './styles.css';
 
-type TVListCardProps = {
-  backdrop_path: string | null;
-  original_language: string;
-  original_name: string;
-  first_air_date: string;
-  overview: string;
-  popularity: number;
-  poster_path: string | null;
-  title: string;
-  video: boolean;
-  vote_average: number;
-  vote_count: number;
-};
+type TVListCardProps = TVShow;
 
 export const TVListCard: React.FC<TVListCardProps> = ({
   backdrop_path,
@@ -24,7 +13,6 @@ export const TVListCard: React.FC<TVListCardProps> = ({
   original_name,
   poster_path,
   first_air_date,
-  title,
   video,
   vote_average,
   overview,
@@ -40,11 +28,10 @@ export const TVListCard: React.FC<TVListCardProps> = ({
                   <img
                     className="tv-image"
                     src={`https://image.tmdb.org/t/p/w500${poster_path}`}
-                    alt={`${title} poster`}
+                    alt={`${original_name} poster`}
                   />
                   <StarRating rating={vote_average} />
                 </div>
-
                 <div className="flip-back">
                   <p className="tv-overview">{overview}</p>
                 </div>
@@ -58,7 +45,7 @@ export const TVListCard: React.FC<TVListCardProps> = ({
             <img
               className="tv-image-backdrop"
               src={`https://image.tmdb.org/t/p/w1280${backdrop_path}`}
-              alt={`${title} backdrop`}
+              alt={`${original_name} backdrop`}
             />
           </div>
         )}
@@ -66,7 +53,7 @@ export const TVListCard: React.FC<TVListCardProps> = ({
 
       <div className="TVList-details-card">
         <h2 className="original-tv-title">{original_name}</h2>
-        <p>Original Language: {original_language}</p>
+        <p>Original Language: {original_language.toUpperCase()}</p>
         <p>First Air Date: {first_air_date}</p>
         {video && <p>🎬 Video Available</p>}
       </div>

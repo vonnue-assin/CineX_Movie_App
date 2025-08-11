@@ -1,35 +1,24 @@
+import React, { useEffect } from 'react';
 import { toast } from 'react-toastify';
 
 import { useGetTVLists } from '../../apis/TV';
 import { TVListCard } from '../TVListCard';
+import { TVShow } from '../../types/TVShow';
 
 import './styles.css';
 
-type TVShow = {
-  id: number;
-  backdrop_path: string | null;
-  original_language: string;
-  original_name: string;
-  first_air_date: string;
-  overview: string;
-  popularity: number;
-  poster_path: string | null;
-  title: string;
-  video: boolean;
-  vote_average: number;
-  vote_count: number;
-};
-
-export const TVList = () => {
+export const TVList: React.FC = () => {
   const { data: tvshows, isLoading, isError } = useGetTVLists();
 
-  if (isLoading) {
-    toast.info('Loading TV shows..');
-  }
+  useEffect(() => {
+    if (isLoading) {
+      toast.info('Loading TV shows...');
+    }
 
-  if (isError) {
-    toast.error('Failed to load TV shows. Please try again');
-  }
+    if (isError) {
+      toast.error('Failed to load TV shows. Please try again.');
+    }
+  }, [isLoading, isError]);
 
   if (!tvshows || tvshows.length === 0) {
     return <p>No TV shows found.</p>;
