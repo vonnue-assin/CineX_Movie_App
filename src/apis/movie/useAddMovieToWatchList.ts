@@ -14,8 +14,8 @@ export const useAddToWatchList = () => {
 
   return useMutation({
     mutationKey: [DataQueryKeys.USER_LIST],
-    mutationFn: async ({ id }: AddToWishlistParams) => {
-      const { data } = await httpClient.post(endPoints.getUserId(22198483), {
+    mutationFn: async ({ userId, id }: AddToWishlistParams) => {
+      const { data } = await httpClient.post(endPoints.getUserId(userId), {
         media_type: 'movie',
         media_id: id,
         watchlist: true,
@@ -23,9 +23,9 @@ export const useAddToWatchList = () => {
 
       return data;
     },
-    onSuccess: (_data, variables) => {
+    onSuccess: (_data, { userId, id }) => {
       queryClient.invalidateQueries({
-        queryKey: [DataQueryKeys.USER_LIST, variables.userId],
+        queryKey: [DataQueryKeys.WATCHLIST_STATUS, userId, id],
       });
     },
   });

@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { toast } from 'react-toastify';
 
 import { useAddToWatchList } from '../../apis/movie/useAddMovieToWatchList';
+import { useIsMovieInWatchList } from '../../apis/user/useIsMovieInWatchList';
 import { StarRating } from '../StarRating';
 
 import { ReactComponent as WatchList } from '../../assets/svg/watchList.svg';
@@ -19,7 +20,7 @@ type MovieListCardProps = {
   video: boolean;
   vote_average: number;
   vote_count: number;
-  id: number;
+  id: number; 
   userId: number;
 };
 
@@ -33,22 +34,33 @@ export const NowPlayingMovieCard: React.FC<MovieListCardProps> = ({
   video,
   vote_average,
   overview,
-  id,
+  id: movieId,
   userId,
 }) => {
-  const [isWishlisted, setIsWatchlisted] = useState(false);
+  const { data: isWishlisted = false, isLoading } = useIsMovieInWatchList(
+    userId,
+    movieId,
+  );
 
-  const { mutate: addToWatchlist } = useAddToWatchList();
+  const { mutate: addToWatchlist, isPending } = useAddToWatchList();
 
   const handleWatchlistClick = () => {
-    setIsWatchlisted(!isWishlisted);
+    if (isLoading || isPending) return;
 
-    addToWatchlist({ userId, id });
-
-    toast.success(
-      `Movie "${title}" ${
-        isWishlisted ? 'removed from' : 'saved to'
-      } watchlist`,
+    addToWatchlist(
+      { userId, id: movieId },
+      {
+        onSuccess: () => {
+          toast.success(
+            `Movie "${title}" ${
+              isWishlisted ? 'removed from' : 'added to'
+            } watchlist`,
+          );
+        },
+        onError: () => {
+          toast.error('Failed to update watchlist');
+        },
+      },
     );
   };
 
@@ -88,11 +100,12 @@ export const NowPlayingMovieCard: React.FC<MovieListCardProps> = ({
       </div>
       <div className="movieList-details-card">
         <WatchList
-          width={'30px'}
-          height={'30px'}
+          width="30px"
+          height="30px"
           style={{
             color: isWishlisted ? 'red' : '#fff',
-            cursor: 'pointer',
+            cursor: isPending ? 'not-allowed' : 'pointer',
+            opacity: isPending ? 0.6 : 1,
           }}
           className="wishList_icon"
           onClick={handleWatchlistClick}
