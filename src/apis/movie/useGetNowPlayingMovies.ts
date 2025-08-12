@@ -1,9 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
 
 import { NowPlayingMovieResponse } from '../../types/NowPlayingMovies';
-import httpClient from '../httpClient';
-import { endPoints } from '../endPoints';
 import { DataQueryKeys } from '../data-query-keys';
+import { endPoints } from '../endPoints';
+import httpClient from '../httpClient';
 
 export const useGetNowPlayingMovies = () => {
   return useQuery({
