@@ -9,7 +9,7 @@ type AddToWishlistParams = {
   id: number;
 };
 
-export const useAddMovieToFavourites = () => {
+export const useRemoveMovieFromFavorites = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
@@ -18,7 +18,7 @@ export const useAddMovieToFavourites = () => {
       const { data } = await httpClient.post(endPoints.addToFavorites(), {
         media_type: 'movie',
         media_id: id,
-        favorite: true,
+        favorite: false,
       });
 
       return data;

@@ -4,6 +4,8 @@ import { toast } from 'react-toastify';
 import { GetFavouriteMovies, useGetMovieList } from '../../apis/movie';
 import { MovieListCard } from '../MovieListCard';
 
+import './styles.css';
+
 export const MovieListSection: React.FC = () => {
   const { data: movies, isLoading, isError } = useGetMovieList();
   const { data: favoriteMovies } = GetFavouriteMovies();

@@ -1,7 +1,10 @@
 import React from 'react';
 import { toast } from 'react-toastify';
 
-import { useAddMovieToFavourites } from '../../apis/movie';
+import {
+  useAddMovieToFavourites,
+  useRemoveMovieFromFavorites,
+} from '../../apis/movie';
 import { useGetUserDetails } from '../../apis/user';
 import { StarRating } from '../StarRating';
 
@@ -36,40 +39,45 @@ export const MovieListCard: React.FC<MovieListCardProps> = ({
   id,
   isFavorite = false,
 }) => {
-  const {
-    mutate: addMovieToFavorites,
-    isPending: isAddingToFavorites,
-    isError: isAddToFavoritesError,
-    error: addToFavoritesError,
-  } = useAddMovieToFavourites();
-  const {
-    data: userDetails,
-    isLoading: isLoadingUserDetails,
-    isError: isGetUserDetailsError,
-    error: getUserDetailsError,
-  } = useGetUserDetails();
+  const { mutate: addMovieToFavorites } = useAddMovieToFavourites();
+  const { mutate: removeMovieFromFavorites } = useRemoveMovieFromFavorites();
+  const { data: userDetails } = useGetUserDetails();
 
   const handleFavoriteClick = () => {
     if (!userDetails || userDetails.length === 0) {
-      toast.error('User details not available to add to favorites.');
+      toast.error('User details not available to manage favorites.');
       return;
     }
+
+    const userId = userDetails[0].id;
+
     const handleSuccessSaveBtn = () => {
       toast.success('Sucessfully added to the favorites lists!');
     };
 
-    const userId = userDetails[0].id;
+    const handleFavoritesRemoveSaveBtn = () => {
+      toast.success('Successfully removed from the favorites list!');
+    };
 
-    addMovieToFavorites(
-      { userId, id },
-      {
-        onSuccess: handleSuccessSaveBtn,
-        onError: error => {
-          toast.error(`Error adding to favorites: ${error.message}`);
+    if (isFavorite) {
+      removeMovieFromFavorites(
+        { userId, id },
+        {
+          onSuccess: handleFavoritesRemoveSaveBtn,
+          onError: error =>
+            toast.error(`Error removing from favorites: ${error.message}`),
         },
-      },
-    );
-    addMovieToFavorites({ userId, id });
+      );
+    } else {
+      addMovieToFavorites(
+        { userId, id },
+        {
+          onSuccess: handleSuccessSaveBtn,
+          onError: error =>
+            toast.error(`Error adding to favorites: ${error.message}`),
+        },
+      );
+    }
   };
 
   return (
