@@ -15,7 +15,7 @@ export const useAddMovieToFavourites = () => {
   return useMutation({
     mutationKey: [DataQueryKeys.USER_LIST],
     mutationFn: async ({ userId, id }: AddToWishlistParams) => {
-      const { data } = await httpClient.post(endPoints.getUserId(userId), {
+      const { data } = await httpClient.post(endPoints.addToFavorites(), {
         media_type: 'movie',
         media_id: id,
         favorite: true,

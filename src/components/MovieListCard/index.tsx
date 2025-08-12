@@ -1,5 +1,8 @@
 import React from 'react';
+import { toast } from 'react-toastify';
 
+import { useAddMovieToFavourites } from '../../apis/movie';
+import { useGetUserDetails } from '../../apis/user';
 import { StarRating } from '../StarRating';
 
 import { ReactComponent as FavoriteIcon } from '../../assets/svg/favoriteIcon.svg';
@@ -33,6 +36,42 @@ export const MovieListCard: React.FC<MovieListCardProps> = ({
   id,
   isFavorite = false,
 }) => {
+  const {
+    mutate: addMovieToFavorites,
+    isPending: isAddingToFavorites,
+    isError: isAddToFavoritesError,
+    error: addToFavoritesError,
+  } = useAddMovieToFavourites();
+  const {
+    data: userDetails,
+    isLoading: isLoadingUserDetails,
+    isError: isGetUserDetailsError,
+    error: getUserDetailsError,
+  } = useGetUserDetails();
+
+  const handleFavoriteClick = () => {
+    if (!userDetails || userDetails.length === 0) {
+      toast.error('User details not available to add to favorites.');
+      return;
+    }
+    const handleSuccessSaveBtn = () => {
+      toast.success('Sucessfully added to the favorites lists!');
+    };
+
+    const userId = userDetails[0].id;
+
+    addMovieToFavorites(
+      { userId, id },
+      {
+        onSuccess: handleSuccessSaveBtn,
+        onError: error => {
+          toast.error(`Error adding to favorites: ${error.message}`);
+        },
+      },
+    );
+    addMovieToFavorites({ userId, id });
+  };
+
   return (
     <div className="movieList-details-container">
       <div className="movie-images-scroller">
@@ -55,7 +94,6 @@ export const MovieListCard: React.FC<MovieListCardProps> = ({
             </div>
           </div>
         )}
-
         {backdrop_path && (
           <div className="movie-image-card">
             <img
@@ -66,17 +104,17 @@ export const MovieListCard: React.FC<MovieListCardProps> = ({
           </div>
         )}
       </div>
-
       <div className="movieList-details-card">
         <FavoriteIcon
           width={'30px'}
           height={'30px'}
           className={`favorite_icon ${isFavorite ? 'favorited' : ''}`}
+          onClick={handleFavoriteClick}
         />
         <h2 className="original-movie-title">{original_title}</h2>
         <p>Original Language: {original_language.toLocaleUpperCase()}</p>
         <p>Release Date: {release_date}</p>
-        <p>id:{id}</p>
+
         {video && <p>🎬 Video Available</p>}
       </div>
     </div>

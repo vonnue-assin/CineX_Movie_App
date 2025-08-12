@@ -9,4 +9,5 @@ export const endPoints = {
     `3/account/null/favorite/movies?language=en-US&page=1&sort_by=created_at.asc`,
   getUserList: () => `/3/account/null `,
   getUserId: (userId: number) => `3/account/22198483/watchlist`,
+  addToFavorites : () => `3/account/null/favorite`
 };
