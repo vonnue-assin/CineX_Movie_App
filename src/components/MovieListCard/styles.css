@@ -156,3 +156,17 @@
   height: auto;
   border-radius: 10px 10px 0 0;
 }
+
+.favorite_icon {
+  cursor: pointer;
+}
+
+.favorite_icon {
+  fill: #fff;
+  transition: fill 0.3s ease;
+}
+
+.favorite_icon.favorited {
+  fill: red;
+  stroke: red;
+}

@@ -2,6 +2,8 @@ import React from 'react';
 
 import { StarRating } from '../StarRating';
 
+import { ReactComponent as FavoriteIcon } from '../../assets/svg/favoriteIcon.svg';
+
 import './styles.css';
 
 type MovieListCardProps = {
@@ -14,6 +16,8 @@ type MovieListCardProps = {
   title: string;
   video: boolean;
   vote_average: number;
+  id: number;
+  isFavorite?: boolean;
 };
 
 export const MovieListCard: React.FC<MovieListCardProps> = ({
@@ -26,6 +30,8 @@ export const MovieListCard: React.FC<MovieListCardProps> = ({
   video,
   vote_average,
   overview,
+  id,
+  isFavorite = false,
 }) => {
   return (
     <div className="movieList-details-container">
@@ -42,7 +48,6 @@ export const MovieListCard: React.FC<MovieListCardProps> = ({
                   />
                   <StarRating rating={vote_average} />
                 </div>
-
                 <div className="flip-back">
                   <p className="movie-overview">{overview}</p>
                 </div>
@@ -63,9 +68,15 @@ export const MovieListCard: React.FC<MovieListCardProps> = ({
       </div>
 
       <div className="movieList-details-card">
+        <FavoriteIcon
+          width={'30px'}
+          height={'30px'}
+          className={`favorite_icon ${isFavorite ? 'favorited' : ''}`}
+        />
         <h2 className="original-movie-title">{original_title}</h2>
-        <p>Original Language: {original_language}</p>
+        <p>Original Language: {original_language.toLocaleUpperCase()}</p>
         <p>Release Date: {release_date}</p>
+        <p>id:{id}</p>
         {video && <p>🎬 Video Available</p>}
       </div>
     </div>
