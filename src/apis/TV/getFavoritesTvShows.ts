@@ -5,11 +5,13 @@ import { DataQueryKeys } from '../data-query-keys';
 import { endPoints } from '../endPoints';
 import httpClient from '../httpClient';
 
-export const useGetTVLists = () => {
+export const useGetFavouriteMovies = () => {
   return useQuery({
-    queryKey: [DataQueryKeys.TV_LISTS],
+    queryKey: [DataQueryKeys.FAVORITE_LISTS],
     queryFn: async () => {
-      const { data } = await httpClient.get<APIResponse>(endPoints.getAllTVList());
+      const { data } = await httpClient.get<APIResponse>(
+        endPoints.getAllFavoriteTvShows(),
+      );
 
       return data.results;
     },
