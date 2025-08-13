@@ -1,7 +1,20 @@
+import httpClient from './httpClient';
+import { AxiosRequestConfig } from 'axios';
+
 export const endPoints = {
-  getMovieGeneresList: () => `3/genre/movie/list?language=en`,
-  getMovieList: () =>
-    `3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc`,
-  getNowPlayingMovies: () => `3/movie/now_playing?language=en-US&page=1`,
-  getPopularPeopleList: () => `3/person/popular?language=en-US&page=1`,
+  // Get list of movie genres
+  getMovieGeneresList: (config?: AxiosRequestConfig) =>
+    httpClient.get('3/genre/movie/list', config),
+
+  // Get list of movies (discover)
+  getMovieList: (config?: AxiosRequestConfig) =>
+    httpClient.get('3/discover/movie', config),
+
+  // Get now playing movies
+  getNowPlayingMovies: (config?: AxiosRequestConfig) =>
+    httpClient.get('3/movie/now_playing', config),
+
+  // Get popular people list
+  getPopularPeopleList: (config?: AxiosRequestConfig) =>
+    httpClient.get('3/person/popular', config),
 };

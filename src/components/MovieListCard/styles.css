@@ -122,3 +122,9 @@
   height: auto;
   border-radius: 10px 10px 0 0;
 }
+
+.movie-image-card {
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  width: 260px;
+}

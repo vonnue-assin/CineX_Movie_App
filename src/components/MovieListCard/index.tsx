@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { StarRating } from '../StarRating';
-
 import './styles.css';
 
 type MovieListCardProps = {
@@ -31,34 +30,29 @@ export const MovieListCard: React.FC<MovieListCardProps> = ({
     <div className="movieList-details-container">
       <div className="movie-images-scroller">
         {poster_path && (
-          <div className="movie-image-card">
-            <div className="flip-wrapper">
-              <div className="flip-inner">
-                <div className="flip-front">
-                  <img
-                    className="movie-image"
-                    src={`https://image.tmdb.org/t/p/w500${poster_path}`}
-                    alt={`${title} poster`}
-                  />
-                  <StarRating rating={vote_average} />
-                </div>
-
-                <div className="flip-back">
-                  <p className="movie-overview">{overview}</p>
-                </div>
+          <div className="flip-wrapper">
+            <div className="flip-inner">
+              <div className="flip-front">
+                <img
+                  className="movie-image"
+                  src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+                  alt={`${title} poster`}
+                />
+                <StarRating rating={vote_average} />
+              </div>
+              <div className="flip-back">
+                <p className="movie-overview">{overview}</p>
               </div>
             </div>
           </div>
         )}
 
         {backdrop_path && (
-          <div className="movie-image-card">
-            <img
-              className="movie-image-backdrop"
-              src={`https://image.tmdb.org/t/p/w1280${backdrop_path}`}
-              alt={`${title} backdrop`}
-            />
-          </div>
+          <img
+            className="movie-image-backdrop movie-image-card"
+            src={`https://image.tmdb.org/t/p/w1280${backdrop_path}`}
+            alt={`${title} backdrop`}
+          />
         )}
       </div>
 
