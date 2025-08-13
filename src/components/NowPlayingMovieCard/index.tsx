@@ -65,7 +65,7 @@ export const NowPlayingMovieCard: React.FC<MovieListCardProps> = ({
 
       <div className="movieList-details-card">
         <h2 className="original-movie-title">{original_title}</h2>
-        <p>Original Language: {original_language}</p>
+        <p>Original Language: {original_language.toLocaleUpperCase()}</p>
         <p>Release Date: {release_date}</p>
         {video && <p>🎬 Video Available</p>}
       </div>
