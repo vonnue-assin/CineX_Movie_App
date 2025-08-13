@@ -1,12 +1,12 @@
 import { toast } from 'react-toastify';
 
-import { useGetNowPlayingMovies } from '../../apis/movie';
+import { useGetNowPlayingMovie } from '../../apis/movie';
 import { NowPlayingMovieCard } from '../NowPlayingMovieCard';
 
 import './styles.css';
 
 export const NowPlayingMovieLists = () => {
-  const { data: movies, isLoading, isError } = useGetNowPlayingMovies();
+  const { data: movies, isLoading, isError } = useGetNowPlayingMovie();
 
   if (isLoading) {
     toast.success('Loading Movies..');

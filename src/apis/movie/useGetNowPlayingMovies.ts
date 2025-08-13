@@ -5,7 +5,7 @@ import { DataQueryKeys } from '../data-query-keys';
 import { endPoints } from '../endPoints';
 import httpClient from '../httpClient';
 
-export const useGetNowPlayingMovies = () => {
+export const useGetNowPlayingMovie = () => {
   return useQuery({
     queryKey: [DataQueryKeys.NOW_PLAYING_MOVIE_LIST],
     queryFn: async () => {
