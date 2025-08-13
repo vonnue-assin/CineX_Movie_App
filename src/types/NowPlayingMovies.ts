@@ -23,3 +23,8 @@ export type NowPlayingMovieResponse = {
   page: number;
   results: NowPlayingMovie[];
 };
+
+export type watchListMovies = {
+  page: number;
+  results: NowPlayingMovie[];
+};

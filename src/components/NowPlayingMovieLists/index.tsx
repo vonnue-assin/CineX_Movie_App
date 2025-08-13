@@ -1,12 +1,16 @@
 import { toast } from 'react-toastify';
 
-import { useGetNowPlayingMovies } from '../../apis/movie';
+import {
+  useGetNowPlayingMovies,
+  useGetWatchListMovies,
+} from '../../apis/movie';
 import { NowPlayingMovieCard } from '../NowPlayingMovieCard';
 
 import './styles.css';
 
-export const NowPlayingMovieLists = () => {
+export const NowPlayingMovieLists: React.FC = () => {
   const { data: movies, isLoading, isError } = useGetNowPlayingMovies();
+  const { data: watchListMovies } = useGetWatchListMovies();
 
   if (isLoading) {
     toast.success('Loading Movies..');
@@ -25,7 +29,11 @@ export const NowPlayingMovieLists = () => {
       <div className="now-playing-movie-container">
         <div className="now-playing-movie-list-container">
           {movies.map(movie => (
-            <NowPlayingMovieCard key={movie.id} {...movie} />
+            <NowPlayingMovieCard
+              key={movie.id}
+              {...movie}
+              isWatchList={watchListMovies?.some(fav => fav.id === movie.id)}
+            />
           ))}
         </div>
       </div>
