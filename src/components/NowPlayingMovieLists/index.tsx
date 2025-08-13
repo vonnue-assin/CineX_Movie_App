@@ -7,6 +7,7 @@ import {
 import { NowPlayingMovieCard } from '../NowPlayingMovieCard';
 
 import './styles.css';
+import { watch } from 'fs';
 
 export const NowPlayingMovieLists: React.FC = () => {
   const { data: movies, isLoading, isError } = useGetNowPlayingMovies();
@@ -32,7 +33,9 @@ export const NowPlayingMovieLists: React.FC = () => {
             <NowPlayingMovieCard
               key={movie.id}
               {...movie}
-              isWatchList={watchListMovies?.some(fav => fav.id === movie.id)}
+              isWatchList={watchListMovies?.some(
+                watchlist => watchlist.id === movie.id,
+              )}
             />
           ))}
         </div>
