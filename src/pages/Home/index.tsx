@@ -1,11 +1,11 @@
 import Header from '../../components/Header';
-
-import './styles.css';
+import { NowPlayingMovieLists } from '../../components/NowPlayingMovieLists';
 
 export const Home = () => {
   return (
-    <div className="home-body">
+    <>
       <Header />
-    </div>
+      <NowPlayingMovieLists />
+    </>
   );
 };
