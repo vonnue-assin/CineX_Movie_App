@@ -7,7 +7,6 @@ import {
 import { NowPlayingMovieCard } from '../NowPlayingMovieCard';
 
 import './styles.css';
-import { watch } from 'fs';
 
 export const NowPlayingMovieLists: React.FC = () => {
   const { data: movies, isLoading, isError } = useGetNowPlayingMovies();
