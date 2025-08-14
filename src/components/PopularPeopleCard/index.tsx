@@ -2,6 +2,7 @@ import React from 'react';
 
 import { PopularPeople } from '../../types/PopularPeople';
 import { KnownForMoviesLists } from '../KnownForMoviesLists.tsx';
+import { POPULAR_PEOPLE_IMAGE_BASE_URL } from '../../constants/posterLink';
 
 import './styles.css';
 
@@ -15,23 +16,23 @@ export const PopularPeopleCard: React.FC<PopularPersonCardProps> = ({
   return (
     <div className="person-card-container">
       <div className="person-header">
-        {person.profile_path && (
+        {person.profilePath && (
           <img
             className="person-profile-image"
-            src={`https://image.tmdb.org/t/p/w300${person.profile_path}`}
+            src={`${POPULAR_PEOPLE_IMAGE_BASE_URL}${person.profilePath}`}
             alt={`${person.name} profile`}
           />
         )}
         <div className="person-info">
           <h2>{person.name}</h2>
-          <p>Known for: {person.known_for_department}</p>
+          <p>Known for: {person.knownForDepartment}</p>
           <p>Popularity: {person.popularity.toFixed(1)}</p>
         </div>
       </div>
 
       <div className="known-for-movies">
         <h3>Known For:</h3>
-        <KnownForMoviesLists movies={person.known_for} />
+        <KnownForMoviesLists movies={person.knownFor} />
       </div>
     </div>
   );

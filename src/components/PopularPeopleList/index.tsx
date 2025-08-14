@@ -1,24 +1,33 @@
+import { Link } from 'react-router-dom';
+import { ClipLoader } from 'react-spinners';
 import { toast } from 'react-toastify';
 
 import { useGetPopularPeopleList } from '../../apis/user';
+import { routes } from '../../routes';
 import { PopularPeopleCard } from '../PopularPeopleCard';
 
 import './styles.css';
-import { Link } from 'react-router-dom';
-import { routes } from '../../routes';
 
 export const PopularPeopleList = () => {
-  const { data: people, isLoading, isError } = useGetPopularPeopleList();
+  const {
+    data: popularPeopleResponse,
+    isLoading,
+    isError,
+  } = useGetPopularPeopleList();
 
   if (isLoading) {
-    toast.info('Loading popular people...');
-    return <p>Loading...</p>;
+    return (
+      <div className="loader-container">
+        <ClipLoader color="red" loading={isLoading} size={60} />
+      </div>
+    );
   }
 
   if (isError) {
     toast.error('Failed to load popular people. Please try again.');
     return <p>Error loading data.</p>;
   }
+  const people = popularPeopleResponse?.results;
 
   if (!people || people.length === 0) {
     return <p>No popular people found.</p>;

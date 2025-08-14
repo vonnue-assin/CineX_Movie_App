@@ -17,19 +17,19 @@ export const KnownForMoviesLists: React.FC<KnownForMoviesListProps> = ({
     <div className="movie-images-scroller">
       {movies.map((movie: KnownForMovie) => (
         <div key={movie.id} className="movie-image-card">
-          {movie.poster_path && (
+          {movie.posterPath && (
             <img
               className="movie-image"
-              src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+              src={`https://image.tmdb.org/t/p/w500${movie.posterPath}`}
               alt={`${movie.title} poster`}
             />
           )}
           <div className="movie-info">
-            <p className="movie-title">{movie.title || movie.original_title}</p>
-            <p>Release: {movie.release_date}</p>
+            <p className="movie-title">{movie.title || movie.originalTitle}</p>
+            <p>Release: {movie.releaseDate}</p>
             <p>
               Rating: <StarIcon width={'14px'} height={'14px'} />
-              {movie.vote_average}
+              {movie.voteAverage}
             </p>
           </div>
         </div>
