@@ -3,11 +3,12 @@ import { toast } from 'react-toastify';
 
 import { useGetNowPlayingMovie } from '../../apis/movie';
 import { NowPlayingMovieCard } from '../NowPlayingMovieCard';
+import { NowPlayingMovie } from '../../types/NowPlayingMovies';
 
 import './styles.css';
 
 export const NowPlayingMovieLists = () => {
-  const { data: movies, isLoading, isError } = useGetNowPlayingMovie();
+  const { data: movieData, isLoading, isError } = useGetNowPlayingMovie();
 
   if (isLoading) {
     return (
@@ -19,9 +20,13 @@ export const NowPlayingMovieLists = () => {
 
   if (isError) {
     toast.error('Failed to load movies. Please try again');
+
+    return null;
   }
 
-  if (movies?.length === 0) {
+  const movies = movieData?.results;
+
+  if (!movies || movies.length === 0) {
     return <p>No movies found</p>;
   }
 
@@ -32,7 +37,7 @@ export const NowPlayingMovieLists = () => {
       </h2>
       <div className="now-playing-movie-container">
         <div className="now-playing-movie-list-container">
-          {(movies ?? []).map(movie => (
+          {movies.map((movie: NowPlayingMovie) => (
             <NowPlayingMovieCard key={movie.id} {...movie} />
           ))}
         </div>

@@ -1,12 +1,9 @@
-.now-playing-movies-title {
-  color: red;
-}
-
 .now-playing-movie-lists-title {
   color: #fff;
   font-family: 'bold-poppins-font';
   text-align: start;
   margin-left: 20px;
+  font-size: 30px;
 }
 
 .now-playing-movie-list-container {
@@ -21,4 +18,14 @@
 .loader-container {
   text-align: center;
   margin-top: 50px;
+}
+
+.now-playing-movie-container {
+  margin: 0 auto;
+  padding: 0 15px;
+  max-width: 1780px;
+}
+
+.now-playing-movie-list-container::-webkit-scrollbar {
+  display: none;
 }

@@ -1,47 +1,48 @@
 import React from 'react';
 
+import { POSTER_BASE_URL } from '../../constants/posterLink';
 import { StarRating } from '../StarRating';
+
+import VideoIcon from '../../assets/images/video.png';
 
 import './styles.css';
 
 type MovieListCardProps = {
-  backdrop_path: string | null;
-  original_language: string;
-  original_title: string;
-  overview: string;
-  poster_path: string | null;
-  release_date: string;
+  backdropPath: string;
+  posterPath: string;
   title: string;
+  overview: string;
+  releaseDate: string;
+  voteAverage: number;
   video: boolean;
-  vote_average: number;
-  vote_count: number;
+  originalLanguage: string;
+  originalTitle: string;
 };
 
 export const NowPlayingMovieCard: React.FC<MovieListCardProps> = ({
-  backdrop_path,
-  original_language,
-  original_title,
-  poster_path,
-  release_date,
+  backdropPath,
+  originalLanguage,
+  originalTitle,
+  posterPath,
+  releaseDate,
   title,
   video,
-  vote_average,
+  voteAverage,
   overview,
 }) => {
   return (
     <div className="movieList-details-container">
       <div className="movie-images-scroller">
-        {poster_path && (
+        {posterPath && (
           <div className="movie-image-card">
             <div className="flip-wrapper">
               <div className="flip-inner">
                 <div className="flip-front">
                   <img
                     className="movie-image"
-                    src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+                    src={`${POSTER_BASE_URL}${posterPath}`}
                     alt={`${title} poster`}
                   />
-                  <StarRating rating={vote_average} />
                 </div>
 
                 <div className="flip-back">
@@ -52,11 +53,11 @@ export const NowPlayingMovieCard: React.FC<MovieListCardProps> = ({
           </div>
         )}
 
-        {backdrop_path && (
+        {backdropPath && (
           <div className="movie-image-card">
             <img
               className="movie-image-backdrop"
-              src={`https://image.tmdb.org/t/p/w1280${backdrop_path}`}
+              src={`${POSTER_BASE_URL}${backdropPath}`}
               alt={`${title} backdrop`}
             />
           </div>
@@ -64,10 +65,16 @@ export const NowPlayingMovieCard: React.FC<MovieListCardProps> = ({
       </div>
 
       <div className="movieList-details-card">
-        <h2 className="original-movie-title">{original_title}</h2>
-        <p>Original Language: {original_language.toLocaleUpperCase()}</p>
-        <p>Release Date: {release_date}</p>
-        {video && <p>🎬 Video Available</p>}
+        <StarRating rating={voteAverage} />
+
+        <h2 className="original-movie-title">{originalTitle}</h2>
+        <p>Original Language: {originalLanguage.toLocaleUpperCase()}</p>
+        <p>Release Date: {releaseDate}</p>
+        {video && (
+          <p className="videoIcon">
+            <VideoIcon /> Video Available
+          </p>
+        )}
       </div>
     </div>
   );

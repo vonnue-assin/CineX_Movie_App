@@ -4,7 +4,6 @@ import { AxiosResponse } from 'axios';
 import { MovieGenre } from '../../types/MovieGenres';
 import { DataQueryKeys } from '../data-query-keys';
 import { endPoints } from '../endPoints';
-import httpClient from '../httpClient';
 
 type MovieGenreApiResponse = {
   genres: MovieGenre[];
@@ -15,11 +14,8 @@ export const useGetMovieGenres = () => {
     queryKey: [DataQueryKeys.MOVIE_GENRES_LIST],
     queryFn: async () => {
       const { data }: AxiosResponse<MovieGenreApiResponse> =
-        await endPoints.getMovieGeneresList({
-          params: {
-            language: 'en-US',
-          },
-        });
+        await endPoints.getMovieGeneresList();
+
       return data.genres;
     },
   });
