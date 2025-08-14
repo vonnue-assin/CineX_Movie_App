@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { ClipLoader } from 'react-spinners';
 
 import { useGetMovieGenres } from '../../apis/movie/useGetMovieGenres';
 import { MovieGenresList } from '../MovieGenersList';
@@ -29,7 +30,7 @@ const Header = () => {
 
       {showGenres && (
         <>
-          {isLoading && <p>Loading genres...</p>}
+          {isLoading && <ClipLoader size={30} />}
           {isError && <p>Failed to load genres. Please try again later.</p>}
           {!isLoading && !isError && <MovieGenresList genres={genres ?? []} />}
         </>
