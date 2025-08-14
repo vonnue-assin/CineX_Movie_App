@@ -57,6 +57,12 @@
   color: red;
 }
 
+.movie-title {
+  margin: 0;
+  color: #fff;
+  font-size: 15px;
+}
+
 .movieList-details-card p {
   font-size: 0.9rem;
   color: #fff;
