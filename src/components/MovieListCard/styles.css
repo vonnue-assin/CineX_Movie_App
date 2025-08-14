@@ -1,8 +1,3 @@
-.original-movie-title {
-  font-size: 30px;
-  color: red;
-}
-
 .movieList-details-container {
   flex-shrink: 0;
   width: 300px;
@@ -123,8 +118,7 @@
   border-radius: 10px 10px 0 0;
 }
 
-.movie-image-card {
-  flex-shrink: 0;
-  scroll-snap-align: start;
-  width: 260px;
+.videoIcon {
+  width: 40px;
+  height: 40px;
 }

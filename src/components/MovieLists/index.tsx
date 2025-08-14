@@ -7,7 +7,7 @@ import { MovieListCard } from '../MovieListCard';
 import './styles.css';
 
 export const MovieList = () => {
-  const { data: movies, isLoading, isError } = useGetMovieList();
+  const { data: movieData, isLoading, isError } = useGetMovieList();
 
   if (isLoading) {
     return (
@@ -19,7 +19,10 @@ export const MovieList = () => {
 
   if (isError) {
     return <p>Failed to load movies.Please try again</p>;
+    
   }
+
+  const movies = movieData?.results;
   
   if (movies?.length === 0) {
     return <p>No movies found</p>;
