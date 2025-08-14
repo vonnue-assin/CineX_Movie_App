@@ -1,6 +1,6 @@
 import { toast } from 'react-toastify';
 
-import { useGetPopularPeopleList } from '../../apis/movie';
+import { useGetPopularPeopleList } from '../../apis/user';
 import { PopularPeopleCard } from '../PopularPeopleCard';
 
 import './styles.css';
