@@ -14,11 +14,8 @@ export const useGetMovieGenres = () => {
     queryKey: [DataQueryKeys.MOVIE_GENRES_LIST],
     queryFn: async () => {
       const { data }: AxiosResponse<MovieGenreApiResponse> =
-        await endPoints.getMovieGeneresList({
-          params: {
-            language: 'en-US',
-          },
-        });
+        await endPoints.getMovieGeneresList();
+
       return data.genres;
     },
   });
