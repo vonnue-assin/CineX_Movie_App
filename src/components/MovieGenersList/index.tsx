@@ -1,13 +1,19 @@
 import React from 'react';
 
 import { MovieGenre } from '../../types/MovieGenres';
-import { MovieGenersCard } from '../MovieGenersCard';
+import './styles.css';
 
 type MovieGenresListProps = {
   genres: MovieGenre[];
+  selectedGenreId: number | null;
+  onSelectGenre: (genreId: number | null) => void;
 };
 
-export const MovieGenresList: React.FC<MovieGenresListProps> = ({ genres }) => {
+export const MovieGenresList: React.FC<MovieGenresListProps> = ({
+  genres,
+  selectedGenreId,
+  onSelectGenre,
+}) => {
   if (genres.length === 0) {
     return (
       <div className="genres-container">
@@ -17,9 +23,49 @@ export const MovieGenresList: React.FC<MovieGenresListProps> = ({ genres }) => {
   }
 
   return (
-    <div className="genres-container">
+    <div
+      className="genres-container"
+      style={{
+        display: 'flex',
+        gap: '10px',
+        flexWrap: 'wrap',
+        marginBottom: 20,
+      }}
+    >
+      <button
+        className={`genre-chip ${selectedGenreId === null ? 'selected' : ''}`}
+        onClick={() => onSelectGenre(null)}
+        style={{
+          cursor: 'pointer',
+          padding: '6px 12px',
+          borderRadius: '20px',
+          border: 'none',
+          backgroundColor: selectedGenreId === null ? '#ff6347' : '#eee',
+          color: selectedGenreId === null ? '#fff' : '#000',
+          fontWeight: selectedGenreId === null ? 'bold' : 'normal',
+        }}
+      >
+        All
+      </button>
       {genres.map(genre => (
-        <MovieGenersCard key={genre.id} name={genre.name} />
+        <button
+          key={genre.id}
+          className={`genre-chip ${
+            selectedGenreId === genre.id ? 'selected' : ''
+          }`}
+          onClick={() => onSelectGenre(genre.id)}
+          style={{
+            cursor: 'pointer',
+            padding: '6px 12px',
+            borderRadius: '20px',
+            border: 'none',
+            backgroundColor: selectedGenreId === genre.id ? '#ff6347' : '#eee',
+            color: selectedGenreId === genre.id ? '#fff' : '#000',
+            fontWeight: selectedGenreId === genre.id ? 'bold' : 'normal',
+          }}
+        >
+          {genre.name}
+        </button>
       ))}
     </div>
   );

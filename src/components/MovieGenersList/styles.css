@@ -1,0 +1,14 @@
+.genre-chip {
+  padding: 6px 12px;
+  border-radius: 20px;
+  border: none;
+  background-color: #eee;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.genre-chip.selected {
+  background-color: #ff6347;
+  color: white;
+  font-weight: bold;
+}

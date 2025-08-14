@@ -10,6 +10,8 @@ import './styles.css';
 
 const Header = () => {
   const [showGenres, setShowGenres] = useState(false);
+  const [selectedGenreId, setSelectedGenreId] = useState<number | null>(null);
+
   const { data: genres, isLoading, isError } = useGetMovieGenres();
 
   const handleMenuClick = () => {
@@ -31,7 +33,13 @@ const Header = () => {
         <>
           {isLoading && <p>Loading genres...</p>}
           {isError && <p>Failed to load genres. Please try again later.</p>}
-          {!isLoading && !isError && <MovieGenresList genres={genres ?? []} />}
+          {!isLoading && !isError && (
+            <MovieGenresList
+              genres={genres ?? []}
+              selectedGenreId={selectedGenreId}
+              onSelectGenre={setSelectedGenreId}
+            />
+          )}
         </>
       )}
     </div>
