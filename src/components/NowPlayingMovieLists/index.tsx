@@ -26,7 +26,7 @@ export const NowPlayingMovieLists = () => {
 
   const movies = movieData?.results;
 
-  if (!movies || movies.length === 0) {
+  if (movies?.length === 0) {
     return <p>No movies found</p>;
   }
 
@@ -37,7 +37,7 @@ export const NowPlayingMovieLists = () => {
       </h2>
       <div className="now-playing-movie-container">
         <div className="now-playing-movie-list-container">
-          {movies.map((movie: NowPlayingMovie) => (
+          {(movies ?? []).map((movie: NowPlayingMovie) => (
             <NowPlayingMovieCard key={movie.id} {...movie} />
           ))}
         </div>
