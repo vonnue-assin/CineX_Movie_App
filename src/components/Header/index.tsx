@@ -30,7 +30,7 @@ const Header = () => {
 
       {showGenres && (
         <>
-          {isLoading && <ClipLoader size={30} />}
+          {isLoading && <ClipLoader size={30} color="red" />}
           {isError && <p>Failed to load genres. Please try again later.</p>}
           {!isLoading && !isError && <MovieGenresList genres={genres ?? []} />}
         </>
