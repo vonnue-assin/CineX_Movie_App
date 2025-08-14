@@ -13,7 +13,7 @@ export const NowPlayingMovieLists = () => {
   if (isLoading) {
     return (
       <div className="loader-container">
-        <ClipLoader color="red" loading={isLoading} size={60} />
+        <ClipLoader color="red" loading={isLoading} size={100} />
       </div>
     );
   }
