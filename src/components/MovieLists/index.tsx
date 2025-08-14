@@ -12,18 +12,17 @@ export const MovieList = () => {
   if (isLoading) {
     return (
       <div className="loader-container">
-        <ClipLoader loading={isLoading} color="red" size={60} />
+        <ClipLoader loading={isLoading} color="red" size={100} />
       </div>
     );
   }
 
   if (isError) {
     return <p>Failed to load movies.Please try again</p>;
-    
   }
 
   const movies = movieData?.results;
-  
+
   if (movies?.length === 0) {
     return <p>No movies found</p>;
   }
