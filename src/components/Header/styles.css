@@ -1,7 +1,6 @@
 .header-body {
-  padding: 20px;
-  color: #f8f7ff;
-  margin-top: 70px;
+  background: #f8f7ff;
+  margin-top: 87px;
 }
 
 .cinex-logo {
@@ -21,6 +20,7 @@
   color: black;
   top: 2%;
   cursor: pointer;
+  margin-left: 20px;
 }
 
 .logo {

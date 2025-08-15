@@ -1,0 +1,19 @@
+.getstarted-button {
+  background-color: red;
+  border: none;
+  color: #fff;
+  margin-top: 50px;
+  padding: 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+  font-family: 'bold-poppins-font';
+  text-decoration: none;
+}
+
+.getstarted-button:hover {
+  background-color: #0077b6;
+}
+
+.getSignIn-attributes {
+  margin-top: 30px;
+}
