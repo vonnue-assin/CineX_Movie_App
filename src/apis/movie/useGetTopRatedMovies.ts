@@ -9,7 +9,7 @@ export const useGetTopRatedMovies = () => {
   return useQuery<TopMovieAPIResponse>({
     queryKey: [DataQueryKeys.TOP_MOVIE_LIST],
     queryFn: async () => {
-      const { data } = await httpClient.get<TopMovieResponse>(
+      const { data } = await httpClient.get<TopMovieAPIResponse>(
         endPoints.getTrendingMoviesList(),
       );
       return data.results;
