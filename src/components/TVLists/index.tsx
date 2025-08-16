@@ -20,7 +20,7 @@ export const TVList: React.FC = () => {
   }
 
   if (isError) {
-    toast.success('Failed to load movies.Please try again');
+    toast.error('Failed to load movies.Please try again');
     return <ClipLoader className="loader-container" color="red" size={100} />;
   }
 
