@@ -1,18 +1,26 @@
 import { useQuery } from '@tanstack/react-query';
 
-import { TopMovie, TopMovieAPIResponse } from '../../types/TopRatedMovies';
+import { convertKeysToCamelCase } from '../../components/ConvertKeysToCamelCase';
+import {
+  TopRatedMovieAPIResponse,
+  TopRatedMovieResponse,
+} from '../../types/TopRatedMovies';
 import { DataQueryKeys } from '../data-query-keys';
 import { endPoints } from '../endPoints';
-import httpClient from '../httpClient';
 
 export const useGetTopRatedMovies = () => {
-  return useQuery<TopMovieAPIResponse>({
+  return useQuery<TopRatedMovieResponse, Error>({
     queryKey: [DataQueryKeys.TOP_MOVIE_LIST],
     queryFn: async () => {
-      const { data } = await httpClient.get<TopMovieAPIResponse>(
-        endPoints.getTrendingMoviesList(),
-      );
-      return data.results;
+      const { data }: { data: TopRatedMovieAPIResponse } =
+        await endPoints.getTrendingMoviesList({
+          params: {
+            page: 1,
+          },
+        });
+
+      const camelCaseData: TopRatedMovieResponse = convertKeysToCamelCase(data);
+      return camelCaseData;
     },
   });
 };

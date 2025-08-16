@@ -1,30 +1,19 @@
-export type TopMovie = {
+export type TopRatedMovieAPIResponse = {
   results: {
-    adult: boolean;
-    backdrop_path: string | null;
-    genre_ids: number[];
     id: number;
-    original_language: string;
-    original_title: string;
-    overview: string;
-    popularity: number;
-    poster_path: string | null;
-    release_date: string;
+    backdrop_path: string;
+    poster_path: string;
     title: string;
-    video: boolean;
+    overview: string;
+    release_date: string;
     vote_average: number;
-    vote_count: number;
-  };
-};
-
-export type TopMovieResponse = {
+  }[];
   page: number;
-  results: TopMovieAPIResponse[];
   total_pages: number;
-  total_results?: number;
+  total_results: number;
 };
 
-export type TopMovieAPIResponse = {
+export type TopRatedMovie = {
   id: number;
   backdropPath: string;
   posterPath: string;
@@ -35,4 +24,11 @@ export type TopMovieAPIResponse = {
   originalLanguage: string;
   video: boolean;
   originalTitle: string;
+};
+
+export type TopRatedMovieResponse = {
+  results: TopRatedMovie[];
+  page: number;
+  totalPages: number;
+  totalResults: number;
 };

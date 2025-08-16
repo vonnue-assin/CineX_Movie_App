@@ -1,21 +1,49 @@
-.now-playing-movies-title {
-  color: red;
-}
-
-.now-playing-movie-list-container {
-  display: flex;
-  gap: 35px;
-  margin-top: 20px;
-  padding: 20px;
-}
-
-.now-playing-movie-lists-title {
+.topListed-movie-lists-title {
   color: #fff;
   font-family: 'bold-poppins-font';
   text-align: start;
   margin-left: 40px;
 }
 
-.star-rating {
-  margin-top: -23px;
+.topListed-movie-lists-title {
+  color: #fff;
+  font-size: 30px;
+  font-family: 'bold-poppins-font';
+  text-align: start;
+  margin-left: 80px;
+}
+
+.topListed-movie-container {
+  margin: 0 auto;
+  padding: 0 15px;
+  max-width: 1780px;
+}
+
+.topListed-movies-list-container {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 20px;
+  gap: 20px;
+}
+
+.topListed-movies-list-container::-webkit-scrollbar {
+  display: none;
+}
+
+.topListed-movies-list-container {
+  scrollbar-width: none;
+}
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
 }

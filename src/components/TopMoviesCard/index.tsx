@@ -1,42 +1,47 @@
 import React from 'react';
 
-import './styles.css';
 import { StarRating } from '../StarRating';
+import { POSTER_BASE_URL, MOVIE_BASE_URL } from '../../constants/posterLink';
+
+import VideoIcon from '../../assets/images/video.png';
+
+import './styles.css';
 
 type TopMovieCardprops = {
-  backdrop_path: string | null;
-  original_language: string;
-  original_title: string;
+  backdropPath: string | null;
+  originalLanguage: string;
+  originalTitle: string;
   overview: string;
-  poster_path: string | null;
-  release_date: string;
+  posterPath: string | null;
+  releaseDate: string;
   title: string;
   video: boolean;
-  vote_average: number;
+  voteAverage: number;
 };
 
 export const TopMovieCard: React.FC<TopMovieCardprops> = ({
-  backdrop_path,
-  original_language,
-  original_title,
-  poster_path,
-  release_date,
+  backdropPath,
+  originalLanguage,
+  originalTitle,
+  posterPath,
+  releaseDate,
   title,
   video,
+
   overview,
-  vote_average,
+  voteAverage,
 }) => {
   return (
     <div className="movieList-details-container">
       <div className="movie-images-scroller">
-        {poster_path && (
+        {posterPath && (
           <div className="movie-image-card">
             <div className="flip-wrapper">
               <div className="flip-inner">
                 <div className="flip-front">
                   <img
                     className="movie-image"
-                    src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+                    src={`${POSTER_BASE_URL}${posterPath}`}
                     alt={`${title} poster`}
                   />
                 </div>
@@ -48,11 +53,11 @@ export const TopMovieCard: React.FC<TopMovieCardprops> = ({
           </div>
         )}
 
-        {backdrop_path && (
+        {backdropPath && (
           <div className="movie-image-card">
             <img
               className="movie-image-backdrop"
-              src={`https://image.tmdb.org/t/p/w1280${backdrop_path}`}
+              src={`${MOVIE_BASE_URL}${backdropPath}`}
               alt={`${title} backdrop`}
             />
           </div>
@@ -60,12 +65,17 @@ export const TopMovieCard: React.FC<TopMovieCardprops> = ({
       </div>
 
       <div className="movieList-details-card">
-        <StarRating rating={vote_average} />
-        <h2 className="original-movie-title">{original_title}</h2>
+        <StarRating rating={voteAverage} />
 
-        <p>Original Language: {original_language.toUpperCase()}</p>
-        <p>Release Date: {release_date}</p>
-        {video && <p>🎬 Video Available</p>}
+        <h2 className="original-movie-title">{originalTitle}</h2>
+        <p>Original Language: {originalLanguage.toUpperCase()}</p>
+        <p>Release Date: {releaseDate}</p>
+        {video && (
+          <p className="videoIcon">
+            <VideoIcon />
+            Video Available
+          </p>
+        )}
       </div>
     </div>
   );
