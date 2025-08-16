@@ -15,7 +15,7 @@ export const StarRating: React.FC<{ rating: number }> = ({ rating }) => {
         </span>
       ))}
       {Array.from({ length: emptyStars }, (_, i) => (
-        <span key={`empty-${i}`} style={{ color: '#ccc' }}>
+        <span key={`empty-${i}`} style={{ color: '#fff' }}>
           <StarIcon width={'20px'} />
         </span>
       ))}
