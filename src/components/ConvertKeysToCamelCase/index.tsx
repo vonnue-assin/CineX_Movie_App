@@ -1,5 +1,5 @@
-const snakeCaseToCamelCase = (s: string) => {
-  return s.replace(/([-_][a-z])/gi, $1 => {
+const snakeCaseToCamelCase = (str: string) => {
+  return str.replace(/([-_][a-z])/gi, $1 => {
     return $1.toUpperCase().replace('-', '').replace('_', '');
   });
 };
