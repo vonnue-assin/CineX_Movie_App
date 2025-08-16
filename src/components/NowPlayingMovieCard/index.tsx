@@ -68,7 +68,7 @@ export const NowPlayingMovieCard: React.FC<MovieListCardProps> = ({
         <StarRating rating={voteAverage} />
 
         <h2 className="original-movie-title">{originalTitle}</h2>
-        <h2 className='movie-title'>{title}</h2>
+        <h2 className="movie-title">{title}</h2>
         <p>Original Language: {originalLanguage.toLocaleUpperCase()}</p>
         <p>Release Date: {releaseDate}</p>
         {video && (
