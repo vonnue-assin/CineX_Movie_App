@@ -32,7 +32,9 @@ export const TopMovieList = () => {
 
   return (
     <>
-      <h2 className="topListed-movie-lists-title">Top Rated Movie Lists...</h2>
+      <h2 className="topListed-movie-lists-title">
+        Explore the Top Rated Movies..
+      </h2>
       <div className="topListed-movie-container">
         <div className="topListed-movies-list-container">
           {(TopRatedmovies ?? []).map((movie: TopRatedMovie) => (
