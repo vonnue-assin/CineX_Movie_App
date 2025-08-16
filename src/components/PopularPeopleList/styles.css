@@ -1,0 +1,51 @@
+.popular-people-lists-title {
+  font-size: 2rem;
+  text-align: start;
+  margin: 2rem 0 1rem;
+  color: #fff;
+  padding-bottom: 20px;
+  font-family: 'bold-poppins-font';
+  margin-left: 25px;
+}
+
+.popular-people-container {
+  display: flex;
+  justify-content: center;
+  padding: 0 1rem;
+  margin-left: 120px;
+}
+
+.popular-people-list-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 150px;
+  padding-bottom: 50px;
+}
+
+.home-page-button {
+  padding: 8px 20px;
+  background-color: #c1121f;
+  border-radius: 5px;
+  position: absolute;
+  right: 85px;
+  top: 3px;
+  border: none;
+  text-decoration: none;
+  font-family: 'bold-poppins-font';
+}
+
+.left-arrow-icon {
+  margin-bottom: -9px;
+}
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+}
