@@ -1,9 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
 
-import { DataQueryKeys } from '../data-query-keys';
-import httpClient from '../httpClient';
-import { endPoints } from '../endPoints';
 import { TmdbUserAccount } from '../../types/user';
+import { DataQueryKeys } from '../data-query-keys';
+import { endPoints } from '../endPoints';
+import httpClient from '../httpClient';
 
 export const useGetUserDetails = () => {
   return useQuery<TmdbUserAccount[]>({
