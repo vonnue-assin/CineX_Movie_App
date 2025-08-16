@@ -12,23 +12,40 @@
   display: flex;
   justify-content: center;
   padding: 0 1rem;
+  margin-left: 120px;
 }
 
 .popular-people-list-container {
   display: flex;
   flex-wrap: wrap;
   gap: 150px;
-  justify-content: center;
-  max-width: 1200px;
   padding-bottom: 50px;
 }
 
 .home-page-button {
-  padding: 10px 20px;
+  padding: 8px 20px;
   background-color: #c1121f;
   border-radius: 5px;
   position: absolute;
   right: 85px;
-  top: 4px;
+  top: 3px;
   border: none;
+  text-decoration: none;
+  font-family: 'bold-poppins-font';
+}
+
+.left-arrow-icon {
+  margin-bottom: -9px;
+}
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
 }

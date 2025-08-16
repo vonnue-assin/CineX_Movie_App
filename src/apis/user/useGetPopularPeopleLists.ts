@@ -1,9 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
 
-import { APIResponse, RawAPIResponse } from '../../types/PopularPeople';
-import { endPoints } from '../endPoints';
-import { DataQueryKeys } from '../data-query-keys';
 import { convertKeysToCamelCase } from '../../components/ConvertKeysToCamelCase';
+import { APIResponse, RawAPIResponse } from '../../types/PopularPeople';
+import { DataQueryKeys } from '../data-query-keys';
+import { endPoints } from '../endPoints';
 
 export const useGetPopularPeopleList = () => {
   return useQuery<APIResponse>({

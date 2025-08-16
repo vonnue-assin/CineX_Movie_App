@@ -31,7 +31,7 @@ export const PopularPeopleCard: React.FC<PopularPersonCardProps> = ({
       </div>
 
       <div className="known-for-movies">
-        <h3>Known For:</h3>
+        <h3 className="known-movie-title">Acclaimed Movies:</h3>
         <KnownForMoviesLists movies={person.knownFor} />
       </div>
     </div>

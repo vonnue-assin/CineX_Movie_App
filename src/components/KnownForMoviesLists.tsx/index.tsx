@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { MOVIE_BASE_URL } from '../../constants/posterLink';
 import { KnownForMovie } from '../../types/PopularPeople';
 
 import { ReactComponent as StarIcon } from '../../assets/svg/starIcon.svg';
@@ -20,7 +21,7 @@ export const KnownForMoviesLists: React.FC<KnownForMoviesListProps> = ({
           {movie.posterPath && (
             <img
               className="movie-image"
-              src={`https://image.tmdb.org/t/p/w500${movie.posterPath}`}
+              src={`${MOVIE_BASE_URL}${movie.posterPath}`}
               alt={`${movie.title} poster`}
             />
           )}

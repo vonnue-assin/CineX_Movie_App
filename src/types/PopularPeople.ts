@@ -1,5 +1,3 @@
-import { JSX } from "react/jsx-runtime";
-
 export type KnownForMovie = {
   adult: boolean;
   backdropPath: string | null;
@@ -62,7 +60,6 @@ export type PopularPeople = {
 };
 
 export type APIResponse = {
-  map(arg0: (person: { id: any; adult?: boolean; gender?: number; knownForDepartment?: string; name?: string; originalName?: string; popularity?: number; profilePath?: string | null; knownFor?: KnownForMovie[]; }) => JSX.Element): import("react").ReactNode;
   page: number;
   results: PopularPeople[];
 };
