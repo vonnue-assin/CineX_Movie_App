@@ -1,12 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
 
-import { TopMovieResponse } from '../../types/TopRatedMovies';
-import httpClient from '../httpClient';
-import { endPoints } from '../endPoints';
+import { TopMovie, TopMovieAPIResponse } from '../../types/TopRatedMovies';
 import { DataQueryKeys } from '../data-query-keys';
+import { endPoints } from '../endPoints';
+import httpClient from '../httpClient';
 
 export const useGetTopRatedMovies = () => {
-  return useQuery({
+  return useQuery<TopMovieAPIResponse>({
     queryKey: [DataQueryKeys.TOP_MOVIE_LIST],
     queryFn: async () => {
       const { data } = await httpClient.get<TopMovieResponse>(

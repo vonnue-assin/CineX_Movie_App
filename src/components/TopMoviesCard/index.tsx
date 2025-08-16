@@ -1,6 +1,7 @@
 import React from 'react';
 
 import './styles.css';
+import { StarRating } from '../StarRating';
 
 type TopMovieCardprops = {
   backdrop_path: string | null;
@@ -11,6 +12,7 @@ type TopMovieCardprops = {
   release_date: string;
   title: string;
   video: boolean;
+  vote_average: number;
 };
 
 export const TopMovieCard: React.FC<TopMovieCardprops> = ({
@@ -22,6 +24,7 @@ export const TopMovieCard: React.FC<TopMovieCardprops> = ({
   title,
   video,
   overview,
+  vote_average,
 }) => {
   return (
     <div className="movieList-details-container">
@@ -57,9 +60,10 @@ export const TopMovieCard: React.FC<TopMovieCardprops> = ({
       </div>
 
       <div className="movieList-details-card">
+        <StarRating rating={vote_average} />
         <h2 className="original-movie-title">{original_title}</h2>
-        <p></p>
-        <p>Original Language: {original_language}</p>
+
+        <p>Original Language: {original_language.toUpperCase()}</p>
         <p>Release Date: {release_date}</p>
         {video && <p>🎬 Video Available</p>}
       </div>
