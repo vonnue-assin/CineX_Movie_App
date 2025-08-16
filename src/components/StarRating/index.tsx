@@ -1,6 +1,6 @@
-import './styles.css';
-
 import { ReactComponent as StarIcon } from '../../assets/svg/starIcon.svg';
+
+import './styles.css';
 
 export const StarRating: React.FC<{ rating: number }> = ({ rating }) => {
   const starsTotal = 5;
