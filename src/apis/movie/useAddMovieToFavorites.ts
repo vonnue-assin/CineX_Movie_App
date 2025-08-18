@@ -4,7 +4,7 @@ import httpClient from '../httpClient';
 import { endPoints } from '../endPoints';
 import { DataQueryKeys } from '../data-query-keys';
 
-type AddToWishlistParams = {
+type AddToFavoritesParams = {
   userId: number;
   id: number;
 };
@@ -14,7 +14,7 @@ export const useAddMovieToFavourites = () => {
 
   return useMutation({
     mutationKey: [DataQueryKeys.USER_LIST],
-    mutationFn: async ({ id }: AddToWishlistParams) => {
+    mutationFn: async ({ id }: AddToFavoritesParams) => {
       const { data } = await httpClient.post(
         endPoints.addToFavorites(),
         {
