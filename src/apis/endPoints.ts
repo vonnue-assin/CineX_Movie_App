@@ -32,5 +32,6 @@ export const endPoints = {
   getWatchListsMovies: (config?: AxiosRequestConfig) =>
     httpClient.get('3/account/null/watchlist/movies', config),
 
+  //add and remove movies from watchlists lists
   toggleWatchListMovies: () => '3/account/null/watchlist',
 };
