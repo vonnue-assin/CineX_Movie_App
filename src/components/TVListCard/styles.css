@@ -67,10 +67,6 @@
   margin-bottom: 5px;
 }
 
-.star-rating span {
-  font-size: 1.2rem;
-}
-
 .flip-wrapper {
   perspective: 1000px;
   width: 250px;
@@ -140,4 +136,14 @@
 .original-name-title {
   font-family: sans-serif;
   font-weight: 900;
+}
+
+.original-tvshow-name {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: bold;
+}
+
+.videoIcon {
+  width: 40px;
+  height: 40px;
 }

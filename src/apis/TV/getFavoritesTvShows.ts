@@ -1,19 +1,21 @@
 import { useQuery } from '@tanstack/react-query';
 
-import { APIResponse } from '../../types/TVShow';
+import { NowPlayingMovies, TVShow } from '../../types/TVShow';
 import { DataQueryKeys } from '../data-query-keys';
 import { endPoints } from '../endPoints';
-import httpClient from '../httpClient';
+import { convertKeysToCamelCase } from '../../components/ConvertKeysToCamelCase';
 
-export const useGetFavouriteMovies = () => {
-  return useQuery({
+export const useGetFavouriteTvShows = () => {
+  return useQuery<NowPlayingMovies>({
     queryKey: [DataQueryKeys.FAVORITE_LISTS],
     queryFn: async () => {
-      const { data } = await httpClient.get<APIResponse>(
-        endPoints.getAllFavoriteTvShows(),
-      );
-
-      return data.results;
+      const { data }: { data: TVShow } = await endPoints.getFavouriteTvShows({
+        params: {
+          sort_by: 'popularity.desc',
+        },
+      });
+      const camelCaseData: NowPlayingMovies = convertKeysToCamelCase(data);
+      return camelCaseData;
     },
   });
 };

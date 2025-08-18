@@ -1,26 +1,32 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
-import httpClient from '../httpClient';
-import { endPoints } from '../endPoints';
 import { DataQueryKeys } from '../data-query-keys';
+import { endPoints } from '../endPoints';
+import httpClient from '../httpClient';
 
-type AddToWishlistParams = {
+type ToggleFavoriteTVShowsParams = {
   userId: number;
   id: number;
+  isFavorite: boolean;
 };
 
-export const useAddTVShowsToFavourites = () => {
+export const useToggleFavoriteMovies = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
     mutationKey: [DataQueryKeys.USER_LIST],
-    mutationFn: async ({ id }: AddToWishlistParams) => {
+    mutationFn: async ({ id, isFavorite }: ToggleFavoriteTVShowsParams) => {
       const { data } = await httpClient.post(
-        endPoints.addTvShowsToFavorites(),
+        endPoints.toggleFavorites(),
         {
           media_type: 'tv',
           media_id: id,
-          favorite: true,
+          favorite: isFavorite,
+        },
+        {
+          params: {
+            sort_by: 'popularity.desc',
+          },
         },
       );
 

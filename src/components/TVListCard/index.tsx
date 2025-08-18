@@ -1,16 +1,14 @@
 import React from 'react';
 import { toast } from 'react-toastify';
 
-import {
-  useAddTVShowsToFavourites,
-  useRemoveTvShowFromFavorites,
-} from '../../apis/TV';
+import { useToggleFavoriteMovies } from '../../apis/TV';
 import { useGetUserDetails } from '../../apis/user';
 import { MOVIE_BASE_URL, POSTER_BASE_URL } from '../../constants/posterLink';
 import { NowShowingTVShow } from '../../types/TVShow';
 import { StarRating } from '../StarRating';
 
 import { ReactComponent as FavoriteIcon } from '../../assets/svg/favoriteIcon.svg';
+import VideoIcon from '../../assets/images/video.png';
 
 import './styles.css';
 
@@ -27,10 +25,10 @@ export const TVListCard: React.FC<TVListCardProps> = ({
   firstAirDate,
   name,
   isFavorite,
-  id
+  id,
 }) => {
-  const { mutate: addTvShowsToFavorites } = useAddTVShowsToFavourites();
-  const { mutate: removeTvShowFromFavorites } = useRemoveTvShowFromFavorites();
+  const { mutate: toggleFavorite } = useToggleFavoriteMovies();
+
   const { data: userDetails } = useGetUserDetails();
 
   const handleFavoriteClick = () => {
@@ -40,33 +38,28 @@ export const TVListCard: React.FC<TVListCardProps> = ({
     }
     const userId = userDetails[0].id;
 
-    const handleSuccessSaveBtn = () => {
-      toast.success('Sucessfully added to the favorites lists!');
-    };
-
-    const handleFavoritesRemoveSaveBtn = () => {
-      toast.success('Successfully removed from the favorites list!');
-    };
-
-    if (isFavorite) {
-      removeTvShowFromFavorites(
-        { userId, id },
-        {
-          onSuccess: handleFavoritesRemoveSaveBtn,
-          onError: error =>
-            toast.error(`Error removing from favourites:${error.message}`),
+    toggleFavorite(
+      {
+        userId,
+        id,
+        isFavorite: !isFavorite,
+      },
+      {
+        onSuccess: () => {
+          toast.success(
+            !isFavorite
+              ? 'Successfully added to the favorites lists!'
+              : 'Successfully removed from the favorites lists!',
+          );
         },
-      );
-    } else {
-      addTvShowsToFavorites(
-        { userId, id },
-        {
-          onSuccess: handleSuccessSaveBtn,
-          onError: error =>
-            toast.error(`Error adding to favorites:${error.message}`),
-        },
-      );
-    }
+        onError: error =>
+          toast.error(
+            `Error ${!isFavorite ? 'adding' : 'removing'} from favorites: ${
+              error.message
+            }`,
+          ),
+      },
+    );
   };
 
   return (
@@ -103,7 +96,6 @@ export const TVListCard: React.FC<TVListCardProps> = ({
       </div>
 
       <div className="TVList-details-card">
-        <h2 className="original-tv-title">{originalName}</h2>
         <FavoriteIcon
           width={'30px'}
           height={'30px'}
@@ -111,10 +103,19 @@ export const TVListCard: React.FC<TVListCardProps> = ({
           onClick={handleFavoriteClick}
         />
 
-        <p>Name:{name}</p>
+        <StarRating rating={voteAverage} />
+
+        <h2 className="original-tv-title">{originalName}</h2>
+
+        <p className="original-tvshow-name">{name}</p>
         <p>Original Language: {originalLanguage.toUpperCase()}</p>
         <p>First Air Date: {firstAirDate}</p>
-        {video && <p>🎬 Video Available</p>}
+        {video && (
+          <p className="videoIcon">
+            <VideoIcon />
+            Video Available
+          </p>
+        )}
       </div>
     </div>
   );

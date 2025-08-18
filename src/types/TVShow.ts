@@ -55,6 +55,7 @@ export type NowShowingTVShow = {
   video: boolean;
   originalName: string;
   name: string;
+  isFavorite: boolean;
 };
 
 export type NowPlayingMovies = {
