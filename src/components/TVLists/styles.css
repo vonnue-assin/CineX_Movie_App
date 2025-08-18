@@ -13,20 +13,8 @@
   font-size: 32px;
 }
 
-.star-rating {
-  margin-top: -23px;
-}
-
-.loader-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 9999;
+.favorites_Icon {
+  color: #fff;
 }
 
 .tv-container {
@@ -40,4 +28,16 @@
 
 .tv-container::-webkit-scrollbar {
   display: none;
+}
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
 }
