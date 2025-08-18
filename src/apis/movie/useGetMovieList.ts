@@ -22,6 +22,7 @@ export const useGetMovieList = () => {
           },
         });
       const camelCaseData: NowPlayingMovies = convertKeysToCamelCase(data);
+      
       return camelCaseData;
     },
   });

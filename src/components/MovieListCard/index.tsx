@@ -1,11 +1,7 @@
 import React from 'react';
 import { toast } from 'react-toastify';
-import { ClipLoader } from 'react-spinners';
 
-import {
-  useAddMovieToFavourites,
-  useRemoveMovieFromFavorites,
-} from '../../apis/movie';
+import { useToggleFavoriteMovies } from '../../apis/movie';
 import { useGetUserDetails } from '../../apis/user';
 import { POSTER_BASE_URL } from '../../constants/posterLink';
 import { StarRating } from '../StarRating';
@@ -42,46 +38,40 @@ export const MovieListCard: React.FC<MovieListCardProps> = ({
   id,
   isFavorite = false,
 }) => {
-  const { mutate: addMovieToFavorites } = useAddMovieToFavourites();
-  const { mutate: removeMovieFromFavorites } = useRemoveMovieFromFavorites();
+  const { mutate: toggleFavorite } = useToggleFavoriteMovies();
+
   const { data: userDetails } = useGetUserDetails();
 
   const handleFavoriteClick = () => {
     if (!userDetails || userDetails.length === 0) {
-      <ClipLoader color="red" size={100} className="loader-container" />;
       toast.error('User details not available to manage favorites.');
       return;
     }
 
     const userId = userDetails[0].id;
 
-    const handleSuccessSaveBtn = () => {
-      toast.success('Successfully added to the favorites lists!');
-    };
-
-    const handleFavoritesRemoveSaveBtn = () => {
-      toast.success('Successfully removed from the favorites lists!');
-    };
-
-    if (isFavorite) {
-      removeMovieFromFavorites(
-        { userId, id },
-        {
-          onSuccess: handleFavoritesRemoveSaveBtn,
-          onError: error =>
-            toast.error(`Error removing from favorites: ${error.message}`),
+    toggleFavorite(
+      {
+        userId,
+        id,
+        isFavorite: !isFavorite,
+      },
+      {
+        onSuccess: () => {
+          toast.success(
+            !isFavorite
+              ? 'Successfully added to the favorites lists!'
+              : 'Successfully removed from the favorites lists!',
+          );
         },
-      );
-    } else {
-      addMovieToFavorites(
-        { userId, id },
-        {
-          onSuccess: handleSuccessSaveBtn,
-          onError: error =>
-            toast.error(`Error adding to favorites: ${error.message}`),
-        },
-      );
-    }
+        onError: error =>
+          toast.error(
+            `Error ${!isFavorite ? 'adding' : 'removing'} from favorites: ${
+              error.message
+            }`,
+          ),
+      },
+    );
   };
 
   return (

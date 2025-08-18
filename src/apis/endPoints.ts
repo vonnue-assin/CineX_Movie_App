@@ -21,13 +21,10 @@ export const endPoints = {
   getUserList: () => `/3/account/null `,
   getUserId: (userId: number) => `3/account/${userId}/watchlist`,
 
-  //addtoFavourites lists
-  addToFavorites: () => `3/account/null/favorite`,
-
   //get favourite movies lists
   getFavouriteMovies: (config?: AxiosRequestConfig) =>
     httpClient.get('3/account/null/favorite/movies', config),
 
-  //remove from favourites lists
-  removeFromFavorites: () => `3/account/null/favorite`,
+  //add and remove movies from favourites lists
+  toggleFavoriteMovies: () => `3/account/null/favorite`,
 };
