@@ -85,6 +85,12 @@
   color: red;
 }
 
+.movie-title {
+  margin: 0;
+  color: #fff;
+  font-size: 15px;
+}
+
 .movieList-details-card p {
   font-size: 0.9rem;
   color: #fff;
@@ -139,11 +145,6 @@
   text-align: center;
 }
 
-.movie-overview {
-  font-size: 0.9rem;
-  line-height: 1.4;
-}
-
 .movie-image {
   width: 100%;
   height: auto;
@@ -158,4 +159,9 @@
 .watchlist_icon.watchlisted {
   fill: red;
   stroke: red;
+}
+
+.videoIcon {
+  width: 40px;
+  height: 40px;
 }

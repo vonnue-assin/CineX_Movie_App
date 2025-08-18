@@ -1,11 +1,14 @@
-export const endPoints = {
-  //movies
-  getMovieGeneresList: () => `3/genre/movie/list?language=en`,
-  getNowPlayingMovies: () => `3/movie/now_playing?language=en-US&page=1`,
-  getWatchListMovies: () =>
-    `3/account/null/watchlist/movies?language=en-US&page=1&sort_by=created_at.asc`,
-  addMoviesToWatchList: (userId: number) => `3/account/${userId}/watchlist`,
+import httpClient from './httpClient';
+import { AxiosRequestConfig } from 'axios';
 
-  //user
-  getUserList: () => `/3/account/null `,
+export const endPoints = {
+  //get movies list API
+  getMovieGeneresList: (config?: AxiosRequestConfig) =>
+    httpClient.get('3/genre/movie/list', config),
+  getNowPlayingMovies: (config?: AxiosRequestConfig) =>
+    httpClient.get('3/movie/now_playing', config),
+
+  //popular people lists
+  getPopularPeopleList: (config?: AxiosRequestConfig) =>
+    httpClient.get('3/person/popular', config),
 };

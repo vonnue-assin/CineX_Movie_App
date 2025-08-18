@@ -1,25 +1,35 @@
+import { ClipLoader } from 'react-spinners';
 import { toast } from 'react-toastify';
 
-import {
-  useGetNowPlayingMovies,
-  useGetWatchListMovies,
-} from '../../apis/movie';
+import { useGetWatchListMovies } from '../../apis/movie';
+import { useGetNowPlayingMovie } from '../../apis/movie';
 import { NowPlayingMovieCard } from '../NowPlayingMovieCard';
+import { NowPlayingMovie } from '../../types/NowPlayingMovies';
 
 import './styles.css';
 
-export const NowPlayingMovieLists: React.FC = () => {
-  const { data: movies, isLoading, isError } = useGetNowPlayingMovies();
-  const { data: watchListMovies } = useGetWatchListMovies();
+export const NowPlayingMovieLists = () => {
+  const { data: movieData, isLoading, isError } = useGetNowPlayingMovie();
 
   if (isLoading) {
-    toast.success('Loading Movies..');
+    return (
+      <div className="loader-container">
+        <ClipLoader color="red" loading={isLoading} size={100} />
+      </div>
+    );
   }
 
   if (isError) {
-    toast.error('Failed to load movies.Please try again');
+    toast.error('Failed to load movies. Please try again');
+
+    return null;
   }
-  if (!movies || movies.length === 0) return <p>No movies found.</p>;
+
+  const movies = movieData?.results;
+
+  if (movies?.length === 0) {
+    return <p>No movies found</p>;
+  }
 
   return (
     <>
@@ -28,7 +38,7 @@ export const NowPlayingMovieLists: React.FC = () => {
       </h2>
       <div className="now-playing-movie-container">
         <div className="now-playing-movie-list-container">
-          {movies.map(movie => (
+          {(movies ?? []).map(movie => (
             <NowPlayingMovieCard
               key={movie.id}
               {...movie}

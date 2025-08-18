@@ -1,19 +1,29 @@
 import { useQuery } from '@tanstack/react-query';
 
-import { NowPlayingMovieResponse } from '../../types/NowPlayingMovies';
+import {
+  NowPlayingMovieResponse,
+  NowPlayingMovies,
+} from '../../types/NowPlayingMovies';
 import { DataQueryKeys } from '../data-query-keys';
 import { endPoints } from '../endPoints';
-import httpClient from '../httpClient';
+import { convertKeysToCamelCase } from '../../components/ConvertKeysToCamelCase';
 
-export const useGetNowPlayingMovies = () => {
-  return useQuery({
+export const useGetNowPlayingMovie = () => {
+  return useQuery<NowPlayingMovies, Error>({
     queryKey: [DataQueryKeys.NOW_PLAYING_MOVIE_LIST],
     queryFn: async () => {
-      const { data } = await httpClient.get<NowPlayingMovieResponse>(
-        endPoints.getNowPlayingMovies(),
-      );
+      const { data }: { data: NowPlayingMovieResponse } =
+        await endPoints.getNowPlayingMovies({
+          params: {
+            page: 1,
+            include_adult: false,
+            include_video: false,
+            sort_by: 'popularity.desc',
+          },
+        });
 
-      return data.results;
+      const camelCaseData: NowPlayingMovies = convertKeysToCamelCase(data);
+      return camelCaseData;
     },
   });
 };
