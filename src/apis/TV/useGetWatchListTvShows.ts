@@ -5,20 +5,18 @@ import { NowPlayingMovies, TVShow } from '../../types/TVShow';
 import { DataQueryKeys } from '../data-query-keys';
 import { endPoints } from '../endPoints';
 
-export const useGetTVLists = () => {
+export const useGetWatchListTvShows = () => {
   return useQuery<NowPlayingMovies>({
-    queryKey: [DataQueryKeys.TV_LISTS],
+    queryKey: [DataQueryKeys.TVSHOWS_WATCHLISTS],
     queryFn: async () => {
-      const { data }: { data: TVShow } = await endPoints.getAllTVList({
+      const { data }: { data: TVShow } = await endPoints.getWatchListsTVShows({
         params: {
-          page: 1,
-          include_adult: false,
-          include_video: false,
           sort_by: 'popularity.desc',
         },
       });
+
       const camelCaseData: NowPlayingMovies = convertKeysToCamelCase(data);
-      
+
       return camelCaseData;
     },
   });

@@ -1,3 +1,5 @@
+import { JSX } from 'react/jsx-runtime';
+
 export type TVShow = {
   results: {
     id: number;
@@ -31,10 +33,20 @@ export type NowShowingTVShow = {
   video: boolean;
   originalName: string;
   name: string;
+  releaseDate: string;
+  originalTitle: string;
 };
 
+// export type NowPlayingMovies = {
+//   id: number;
+//   results: NowShowingTVShow[];
+//   page: number;
+//   totalPages: number;
+//   totalResults: number;
+// };
+
 export type NowPlayingMovies = {
-  results: NowShowingTVShow[];
+  results: NowShowingTVShow[]; 
   page: number;
   totalPages: number;
   totalResults: number;

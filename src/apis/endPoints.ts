@@ -2,6 +2,12 @@ import httpClient from './httpClient';
 import { AxiosRequestConfig } from 'axios';
 
 export const endPoints = {
+  //get the tv shows watchlists
+  getWatchListsTVShows: (config?: AxiosRequestConfig) =>
+    httpClient.get('3/account/null/watchlist/tv', config),
+
+  //user
+  getUserList: () => `/3/account/null `,
   //get movies list API
   getMovieGeneresList: (config?: AxiosRequestConfig) =>
     httpClient.get('3/genre/movie/list', config),
@@ -15,4 +21,6 @@ export const endPoints = {
   //get tv shows lists API
   getAllTVList: (config?: AxiosRequestConfig) =>
     httpClient.get('3/discover/tv', config),
+
+  toggleWatchListTvShows: () => '3/account/null/watchlist',
 };

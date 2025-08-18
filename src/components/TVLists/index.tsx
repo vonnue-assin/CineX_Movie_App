@@ -2,7 +2,7 @@ import React from 'react';
 import { toast } from 'react-toastify';
 import { ClipLoader } from 'react-spinners';
 
-import { useGetTVLists } from '../../apis/TV';
+import { useGetWatchListTvShows, useGetTVLists } from '../../apis/TV';
 import { TVListCard } from '../TVListCard';
 import { NowShowingTVShow } from '../../types/TVShow';
 
@@ -10,8 +10,10 @@ import './styles.css';
 
 export const TVList: React.FC = () => {
   const { data: tvshows, isLoading, isError } = useGetTVLists();
+  const { data: watchlisted } = useGetWatchListTvShows();
 
   if (isLoading) {
+    toast.success('Loading tvshows..');
     return (
       <div className="loader-container">
         <ClipLoader loading={isLoading} color="green" size={100} />
@@ -30,13 +32,25 @@ export const TVList: React.FC = () => {
     return <p>No TV shows found.</p>;
   }
 
+  if (isError) {
+    toast.error('Failed to load movies.Please try again');
+  }
+
+  if (isLoading || !tvshows) return <div>Loading...</div>;
+
   return (
     <>
       <h2 className="tv-lists-title">Enjoy and Explore the TV Shows...</h2>
       <div className="tv-container">
         <div className="tv-list-container">
-          {TVShows?.map((show: NowShowingTVShow) => (
-            <TVListCard key={show.id} {...show} />
+          {(TVShows ?? []).map((shows: NowShowingTVShow) => (
+            <TVListCard
+              key={shows.id}
+              {...shows}
+              isWatchList={watchlisted?.results.some(
+                (watchlist: { id: number }) => watchlist.id === shows.id,
+              )}
+            />
           ))}
         </div>
       </div>
