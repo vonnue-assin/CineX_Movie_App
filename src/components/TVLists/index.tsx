@@ -30,7 +30,7 @@ export const TVList: React.FC = () => {
   const favoriteShowsList: NowShowingTVShow[] =
     favoriteTvShowsData?.results || [];
 
-  if (tvShows.length === 0) {
+  if (tvShows?.length === 0) {
     return <p>No TV shows found.</p>;
   }
 

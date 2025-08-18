@@ -10,11 +10,11 @@ type ToggleFavoriteTVShowsParams = {
   isFavorite: boolean;
 };
 
-export const useToggleFavoriteMovies = () => {
+export const useToggleFavoriteTVShows = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationKey: [DataQueryKeys.USER_LIST],
+    mutationKey: [DataQueryKeys.FAVORITE_LISTS],
     mutationFn: async ({ id, isFavorite }: ToggleFavoriteTVShowsParams) => {
       const { data } = await httpClient.post(
         endPoints.toggleFavorites(),

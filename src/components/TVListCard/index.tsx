@@ -1,14 +1,14 @@
 import React from 'react';
 import { toast } from 'react-toastify';
 
-import { useToggleFavoriteMovies } from '../../apis/TV';
+import { useToggleFavoriteTVShows } from '../../apis/TV';
 import { useGetUserDetails } from '../../apis/user';
 import { MOVIE_BASE_URL, POSTER_BASE_URL } from '../../constants/posterLink';
 import { NowShowingTVShow } from '../../types/TVShow';
 import { StarRating } from '../StarRating';
 
-import { ReactComponent as FavoriteIcon } from '../../assets/svg/favoriteIcon.svg';
 import VideoIcon from '../../assets/images/video.png';
+import { ReactComponent as FavoriteIcon } from '../../assets/svg/favoriteIcon.svg';
 
 import './styles.css';
 
@@ -27,7 +27,7 @@ export const TVListCard: React.FC<TVListCardProps> = ({
   isFavorite,
   id,
 }) => {
-  const { mutate: toggleFavorite } = useToggleFavoriteMovies();
+  const { mutate: toggleFavorite } = useToggleFavoriteTVShows();
 
   const { data: userDetails } = useGetUserDetails();
 
