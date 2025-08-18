@@ -1,30 +1,33 @@
+import React from 'react';
 import { toast } from 'react-toastify';
 import { ClipLoader } from 'react-spinners';
 
-import { useGetMovieList } from '../../apis/movie';
+import { GetFavouriteMovies, useGetMovieList } from '../../apis/movie';
 import { MovieListCard } from '../MovieListCard';
 
 import './styles.css';
 
-export const MovieList = () => {
+export const MovieListSection: React.FC = () => {
   const { data: movieData, isLoading, isError } = useGetMovieList();
+  const { data: favoriteMovies } = GetFavouriteMovies();
 
   if (isLoading) {
     return (
       <div className="loader-container">
-        <ClipLoader loading={isLoading} color="red" size={100} />
+        <ClipLoader loading={isLoading} color="green" size={100} />
       </div>
     );
   }
 
   if (isError) {
-    return <p>Failed to load movies.Please try again</p>;
+    toast.error('Failed to load movies.Please try again');
+    return <ClipLoader color="red" size={100} />;
   }
 
   const movies = movieData?.results;
 
   if (movies?.length === 0) {
-    return <p>No movies found</p>;
+    return <p>No Movies Found..</p>;
   }
 
   return (
@@ -33,7 +36,13 @@ export const MovieList = () => {
       <div className="now-playing-movie-container">
         <div className="now-playing-movie-list-container">
           {(movies ?? []).map(movie => (
-            <MovieListCard key={movie.id} {...movie} />
+            <MovieListCard
+              key={movie.id}
+              {...movie}
+              isFavorite={favoriteMovies?.results.some(
+                fav => fav.id === movie.id,
+              )}
+            />
           ))}
         </div>
       </div>

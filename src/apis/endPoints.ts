@@ -18,4 +18,13 @@ export const endPoints = {
   // Get popular people list
   getPopularPeopleList: (config?: AxiosRequestConfig) =>
     httpClient.get('3/person/popular', config),
+  getUserList: () => `/3/account/null `,
+  getUserId: (userId: number) => `3/account/${userId}/watchlist`,
+
+  //get favourite movies lists
+  getFavouriteMovies: (config?: AxiosRequestConfig) =>
+    httpClient.get('3/account/null/favorite/movies', config),
+
+  //add and remove movies from favourites lists
+  toggleFavoriteMovies: () => `3/account/null/favorite`,
 };
