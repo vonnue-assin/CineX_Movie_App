@@ -1,42 +1,39 @@
 import React from 'react';
 
 type MovieWatchListsCardProps = {
-  adult: boolean;
-  backdrop_path: string | null;
-  genre_ids: number[];
-  id: number;
-  original_language: string;
-  original_title: string;
-  overview: string;
-  popularity: number;
-  poster_path: string;
-  release_date: string;
+  backdropPath: string;
+  posterPath: string;
   title: string;
+  overview: string;
+  releaseDate: string;
+  voteAverage: number;
   video: boolean;
-  vote_average: number;
-  vote_count: number;
+  originalLanguage: string;
+  originalTitle: string;
 };
 
 export const MovieWatchListsCard: React.FC<MovieWatchListsCardProps> = ({
-  original_title,
-  poster_path,
+  backdropPath,
+  originalLanguage,
+  originalTitle,
+  posterPath,
+  releaseDate,
   title,
-  original_language,
-  release_date,
+  video,
+  voteAverage,
   overview,
-  backdrop_path,
 }) => {
   return (
     <div className="movieList-details-container">
       <div className="movie-images-scroller">
-        {poster_path && (
+        {posterPath && (
           <div className="movie-image-card">
             <div className="flip-wrapper">
               <div className="flip-inner">
                 <div className="flip-front">
                   <img
                     className="movie-image"
-                    src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+                    src={`https://image.tmdb.org/t/p/w500${posterPath}`}
                     alt={`${title} poster`}
                   />
                 </div>
@@ -49,11 +46,11 @@ export const MovieWatchListsCard: React.FC<MovieWatchListsCardProps> = ({
           </div>
         )}
 
-        {backdrop_path && (
+        {backdropPath && (
           <div className="movie-image-card">
             <img
               className="movie-image-backdrop"
-              src={`https://image.tmdb.org/t/p/w1280${backdrop_path}`}
+              src={`https://image.tmdb.org/t/p/w1280${backdropPath}`}
               alt={`${title} backdrop`}
             />
           </div>
@@ -61,10 +58,10 @@ export const MovieWatchListsCard: React.FC<MovieWatchListsCardProps> = ({
       </div>
 
       <div className="movieList-details-card">
-        <h2 className="original-movie-title">{original_title}</h2>
+        <h2 className="original-movie-title">{originalTitle}</h2>
 
-        <p>Original Language: {original_language.toLocaleUpperCase()}</p>
-        <p>Release Date: {release_date}</p>
+        <p>Original Language: {originalLanguage.toLocaleUpperCase()}</p>
+        <p>Release Date: {releaseDate}</p>
       </div>
     </div>
   );

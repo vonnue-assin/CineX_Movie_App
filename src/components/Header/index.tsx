@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useGetMovieGenres, useGetWatchListMovies } from '../../apis/movie';
 import { MovieGenresList } from '../MovieGenersList';
 import { MovieWatchLists } from '../MovieWatchLists';
+import { NowPlayingMovie } from '../../types/NowPlayingMovies';
 
 import CineXIcon from '../../assets/images/CineXlogo.png';
 import WatchListIcon from '../../assets/images/watchlists.png';
@@ -14,7 +15,7 @@ const Header = () => {
   const [showGenres, setShowGenres] = useState(false);
   const [showWatchListMovies, setShowWatchListMovies] = useState(false);
   const { data: genres, isLoading, isError } = useGetMovieGenres();
-  const { data: movies } = useGetWatchListMovies();
+  const { data: watchListMoviesData } = useGetWatchListMovies();
 
   const handleMenuClick = () => {
     setShowGenres(prev => !prev);
@@ -23,6 +24,7 @@ const Header = () => {
   const handleWatchListClick = () => {
     setShowWatchListMovies(prev => !prev);
   };
+  const movies: NowPlayingMovie[] = watchListMoviesData?.results || [];
 
   return (
     <div className="header-wrapper">
