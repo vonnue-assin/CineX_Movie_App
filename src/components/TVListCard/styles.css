@@ -1,8 +1,4 @@
-.tv-movie-list-container {
-  scrollbar-width: none;
-}
-
-.TV-details-container {
+.tv-details-container {
   flex-shrink: 0;
   width: 300px;
   scroll-snap-align: start;
@@ -13,7 +9,7 @@
   box-sizing: border-box;
 }
 
-.tv-images-scroller {
+.tvshow-images-scroller {
   display: flex;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
@@ -22,53 +18,55 @@
   padding-bottom: 10px;
 }
 
-.tv-images-scroller::-webkit-scrollbar {
+.tvshow-images-scroller::-webkit-scrollbar {
   display: none;
 }
 
-.tv-images-scroller {
+.tvshow-images-scroller {
   scrollbar-width: none;
 }
 
-.tv-image-card {
+.tvshow-image-card {
   flex-shrink: 0;
   scroll-snap-align: start;
   width: 260px;
 }
 
-.tv-image {
+.tvshow-image {
   width: 104%;
   height: 100%;
   display: block;
   border-radius: 8px;
 }
 
-.tv-image-backdrop {
+.tvshow-image-backdrop {
   width: 200%;
   height: 97%;
   display: block;
   border-radius: 8px;
 }
 
-.TVList-details-card {
+.tvshowList-details-card {
   margin-top: 15px;
   line-height: 1.6;
 }
 
-.original-tv-title {
+.original-tvshow-title {
   font-size: 1.4rem;
   margin-bottom: 10px;
   color: red;
 }
 
-.TVList-details-card p {
+.tvshow-title {
+  margin: 0;
+  color: #fff;
+  font-size: 15px;
+}
+
+.tvshowList-details-card p {
   font-size: 0.9rem;
   color: #fff;
   margin-bottom: 5px;
-}
-
-.star-rating span {
-  font-size: 1.2rem;
 }
 
 .flip-wrapper {
@@ -115,12 +113,7 @@
   text-align: center;
 }
 
-.tv-overview {
-  font-size: 0.9rem;
-  line-height: 1.4;
-}
-
-.tv-image {
+.tvshow-image {
   width: 100%;
   height: auto;
   border-radius: 10px 10px 0 0;
@@ -129,7 +122,6 @@
 .watchlist_icon {
   fill: #fff;
   transition: fill 0.3s ease;
-  cursor: pointer;
 }
 
 .watchlist_icon.watchlisted {
@@ -137,7 +129,7 @@
   stroke: red;
 }
 
-.original-name-title {
-  font-family: sans-serif;
-  font-weight: 900;
+.videoIcon {
+  width: 40px;
+  height: 40px;
 }

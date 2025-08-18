@@ -2,8 +2,8 @@ import httpClient from './httpClient';
 import { AxiosRequestConfig } from 'axios';
 
 export const endPoints = {
-  getWatchListTvShows: () =>
-    `3/account/null/watchlist/tv?language=en-US&page=1&sort_by=created_at.asc`,
+   getWatchListsTVShows: (config?: AxiosRequestConfig) =>
+    httpClient.get('3/account/null/watchlist/tv', config),
   addTvShowsToWatchLists: (userId: number) => `3/account/${userId}/watchlist`,
   //user
   getUserList: () => `/3/account/null `,
@@ -20,4 +20,6 @@ export const endPoints = {
   //get tv shows lists API
   getAllTVList: (config?: AxiosRequestConfig) =>
     httpClient.get('3/discover/tv', config),
+
+  toggleWatchListTvShows: () => '3/account/null/watchlist',
 };

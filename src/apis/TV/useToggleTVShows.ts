@@ -4,25 +4,27 @@ import { DataQueryKeys } from '../data-query-keys';
 import { endPoints } from '../endPoints';
 import httpClient from '../httpClient';
 
-type AddToWatchListParams = {
+type ToggleWatchlistsMoviesParams = {
   userId: number;
   id: number;
+  isWatchlist: boolean;
 };
 
-export const useRemoveTvShowsFromWatchLists = () => {
+export const useToggleTVShows = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
     mutationKey: [DataQueryKeys.TVSHOWS_WATCHLISTS],
-    mutationFn: async ({ userId, id }: AddToWatchListParams) => {
+    mutationFn: async ({ id, isWatchlist }: ToggleWatchlistsMoviesParams) => {
       const { data } = await httpClient.post(
-        endPoints.addTvShowsToWatchLists(userId),
+        endPoints.toggleWatchListTvShows(),
         {
           media_type: 'tv',
           media_id: id,
-          watchlist: false,
+          watchlist: isWatchlist,
         },
       );
+
       return data;
     },
     onSuccess: _data => {
