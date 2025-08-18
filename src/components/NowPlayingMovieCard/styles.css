@@ -1,31 +1,3 @@
-.original-movie-title {
-  font-size: 30px;
-  color: red;
-}
-
-.now-playing-movie-container {
-  margin: 0 auto;
-  padding: 0 15px;
-  max-width: 1780px;
-}
-
-.now-playing-movie-list-container {
-  display: flex;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  padding-bottom: 20px;
-  gap: 20px;
-}
-
-.now-playing-movie-list-container::-webkit-scrollbar {
-  display: none;
-}
-
-.now-playing-movie-list-container {
-  scrollbar-width: none;
-}
-
 .movieList-details-container {
   flex-shrink: 0;
   width: 300px;
@@ -97,10 +69,6 @@
   margin-bottom: 5px;
 }
 
-.star-rating span {
-  font-size: 1.2rem;
-}
-
 .flip-wrapper {
   perspective: 1000px;
   width: 250px;
@@ -164,4 +132,8 @@
 .videoIcon {
   width: 40px;
   height: 40px;
+}
+
+.movie-title {
+  font-weight: bold;
 }

@@ -1,20 +1,20 @@
 import { ClipLoader } from 'react-spinners';
 import { toast } from 'react-toastify';
 
-import { useGetWatchListMovies } from '../../apis/movie';
-import { useGetNowPlayingMovie } from '../../apis/movie';
-import { NowPlayingMovieCard } from '../NowPlayingMovieCard';
+import { useGetNowPlayingMovie, useGetWatchListMovies } from '../../apis/movie';
 import { NowPlayingMovie } from '../../types/NowPlayingMovies';
+import { NowPlayingMovieCard } from '../NowPlayingMovieCard';
 
 import './styles.css';
 
 export const NowPlayingMovieLists = () => {
   const { data: movieData, isLoading, isError } = useGetNowPlayingMovie();
+  const { data: watchListMovies } = useGetWatchListMovies();
 
   if (isLoading) {
     return (
       <div className="loader-container">
-        <ClipLoader color="red" loading={isLoading} size={100} />
+        <ClipLoader color="green" loading={isLoading} size={100} />
       </div>
     );
   }
@@ -42,8 +42,8 @@ export const NowPlayingMovieLists = () => {
             <NowPlayingMovieCard
               key={movie.id}
               {...movie}
-              isWatchList={watchListMovies?.some(
-                watchlist => watchlist.id === movie.id,
+              isWatchList={watchListMovies?.results.some(
+                (watchlist: NowPlayingMovie) => watchlist.id === movie.id,
               )}
             />
           ))}
