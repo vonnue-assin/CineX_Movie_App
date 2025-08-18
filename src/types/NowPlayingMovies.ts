@@ -32,3 +32,8 @@ export type NowPlayingMovies = {
   totalPages: number;
   totalResults: number;
 };
+
+export type watchListMovies = {
+  page: number;
+  results: NowPlayingMovie[];
+};
