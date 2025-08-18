@@ -7,7 +7,7 @@ export type NowPlayingMovieResponse = {
     overview: string;
     release_date: string;
     vote_average: number;
-    original_title:string
+    original_title: string;
   }[];
   page: number;
   total_pages: number;

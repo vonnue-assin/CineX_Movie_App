@@ -15,11 +15,19 @@ export const useRemoveMovieFromFavorites = () => {
   return useMutation({
     mutationKey: [DataQueryKeys.USER_LIST],
     mutationFn: async ({ id }: AddToWishlistParams) => {
-      const { data } = await httpClient.post(endPoints.addToFavorites(), {
-        media_type: 'movie',
-        media_id: id,
-        favorite: false,
-      });
+      const { data } = await httpClient.post(
+        endPoints.removeFromFavorites(),
+        {
+          media_type: 'movie',
+          media_id: id,
+          favorite: false,
+        },
+        {
+          params: {
+            sort_by: 'popularity.desc',
+          },
+        },
+      );
 
       return data;
     },

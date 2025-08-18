@@ -19,8 +19,15 @@ export const endPoints = {
   getPopularPeopleList: (config?: AxiosRequestConfig) =>
     httpClient.get('3/person/popular', config),
   getUserList: () => `/3/account/null `,
-  getUserId: (userId: number) => `3/account/22198483/watchlist`,
+  getUserId: (userId: number) => `3/account/${userId}/watchlist`,
+
+  //addtoFavourites lists
   addToFavorites: () => `3/account/null/favorite`,
-  GetFavouriteMovies: () =>
-    `3/account/null/favorite/movies?language=en-US&page=1&sort_by=created_at.asc`,
+
+  //get favourite movies lists
+  getFavouriteMovies: (config?: AxiosRequestConfig) =>
+    httpClient.get('3/account/null/favorite/movies', config),
+
+  //remove from favourites lists
+  removeFromFavorites: () => `3/account/null/favorite`,
 };
