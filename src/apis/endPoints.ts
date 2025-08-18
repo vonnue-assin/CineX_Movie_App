@@ -2,9 +2,10 @@ import httpClient from './httpClient';
 import { AxiosRequestConfig } from 'axios';
 
 export const endPoints = {
-   getWatchListsTVShows: (config?: AxiosRequestConfig) =>
+  //get the tv shows watchlists
+  getWatchListsTVShows: (config?: AxiosRequestConfig) =>
     httpClient.get('3/account/null/watchlist/tv', config),
-  addTvShowsToWatchLists: (userId: number) => `3/account/${userId}/watchlist`,
+
   //user
   getUserList: () => `/3/account/null `,
   //get movies list API
