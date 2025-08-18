@@ -6,6 +6,8 @@ import {
   useRemoveTvShowsFromWatchLists,
 } from '../../apis/TV';
 import { useGetUserDetails } from '../../apis/user';
+import { MOVIE_BASE_URL, POSTER_BASE_URL } from '../../constants/posterLink';
+import { NowShowingTVShow } from '../../types/TVShow';
 import { StarRating } from '../StarRating';
 
 import { ReactComponent as WatchListsIcon } from '../../assets/svg/watchLists.svg';
@@ -14,34 +16,34 @@ import './styles.css';
 
 type TVListCardProps = {
   adult: boolean;
-  backdrop_path: string | null;
-  genre_ids: number[];
+  backdropPath: string | null;
+  genreIds: number[];
   id: number;
-  original_language: string;
-  original_name: string;
+  originalLanguage: string;
+  originalName: string;
   overview: string;
   popularity: number;
-  poster_path: string | null;
-  first_air_date: string;
+  posterPath: string | null;
+  firstAirDate: string;
   title: string;
   video: boolean;
-  vote_average: number;
-  vote_count: number;
+  voteAverage: number;
+  voteCount: number;
   name: string;
   isWatchList: boolean;
 };
 
 export const TVListCard: React.FC<TVListCardProps> = ({
-  backdrop_path,
-  original_language,
-  original_name,
-  poster_path,
-  first_air_date,
+  backdropPath,
+  originalLanguage,
+  originalName,
+  posterPath,
   video,
-  vote_average,
+  voteAverage,
   overview,
   isWatchList,
   id,
+  firstAirDate,
   name,
 }) => {
   const { mutate: addTvShowsToFavorites } = useAddToWatchLists();
@@ -88,17 +90,16 @@ export const TVListCard: React.FC<TVListCardProps> = ({
   return (
     <div className="TV-details-container">
       <div className="tv-images-scroller">
-        {poster_path && (
+        {posterPath && (
           <div className="tv-image-card">
             <div className="flip-wrapper">
               <div className="flip-inner">
                 <div className="flip-front">
                   <img
                     className="tv-image"
-                    src={`https://image.tmdb.org/t/p/w500${poster_path}`}
-                    alt={`${original_name} poster`}
+                    src={`${MOVIE_BASE_URL}${posterPath}`}
+                    alt={`${originalName} poster`}
                   />
-                  <StarRating rating={vote_average} />
                 </div>
                 <div className="flip-back">
                   <p className="tv-overview">{overview}</p>
@@ -108,29 +109,35 @@ export const TVListCard: React.FC<TVListCardProps> = ({
           </div>
         )}
 
-        {backdrop_path && (
+        {backdropPath && (
           <div className="tv-image-card">
             <img
               className="tv-image-backdrop"
-              src={`https://image.tmdb.org/t/p/w1280${backdrop_path}`}
-              alt={`${original_name} backdrop`}
+              src={`${POSTER_BASE_URL}${backdropPath}`}
+              alt={`${originalName} backdrop`}
             />
           </div>
         )}
       </div>
 
       <div className="TVList-details-card">
-        <h2 className="original-tv-title">{original_name}</h2>
+        <h2 className="original-tv-title">{originalName}</h2>
         <WatchListsIcon
           width={'30px'}
           height={'30px'}
-          className={`watchlist_icon ${isWatchList? 'watchlisted' : ''}`}
+          className={`watchlist_icon ${isWatchList ? 'watchlisted' : ''}`}
           onClick={handleFavoriteClick}
         />
 
         <p>Name:{name}</p>
-        <p>Original Language: {original_language.toUpperCase()}</p>
-        <p>First Air Date: {first_air_date}</p>
+        <p>Original Language: {originalLanguage.toUpperCase()}</p>
+        <p>First Air Date: {firstAirDate}</p>
+        <StarRating rating={voteAverage} />
+
+        <h2 className="original-tv-title">{originalName}</h2>
+        <p className="original-name-title">{name}</p>
+        <p>Original Language: {originalLanguage.toUpperCase()}</p>
+        <p>First Air Date: {firstAirDate}</p>
         {video && <p>🎬 Video Available</p>}
       </div>
     </div>

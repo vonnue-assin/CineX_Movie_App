@@ -8,15 +8,19 @@ type MovieGenresListProps = {
 };
 
 export const MovieGenresList: React.FC<MovieGenresListProps> = ({ genres }) => {
+  if (genres.length === 0) {
+    return (
+      <div className="genres-container">
+        <p>No genres available.</p>
+      </div>
+    );
+  }
+
   return (
     <div className="genres-container">
-      {genres.length > 0 ? (
-        genres.map(genre => (
-          <MovieGenersCard key={genre.id} name={genre.name} />
-        ))
-      ) : (
-        <p>No genres available.</p>
-      )}
+      {genres.map(genre => (
+        <MovieGenersCard key={genre.id} name={genre.name} />
+      ))}
     </div>
   );
 };

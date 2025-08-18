@@ -1,9 +1,11 @@
 import React from 'react';
 import { toast } from 'react-toastify';
+import { ClipLoader } from 'react-spinners';
 
 import { useGetWatchListMovies, useGetTVLists } from '../../apis/TV';
 import { TVListCard } from '../TVListCard';
 import { TvShowsWatchLists } from '../../types/TVShow';
+import { NowShowingTVShow } from '../../types/TVShow';
 
 import './styles.css';
 
@@ -13,6 +15,22 @@ export const TVList: React.FC = () => {
 
   if (isLoading) {
     toast.success('Loading tvshows..');
+    return (
+      <div className="loader-container">
+        <ClipLoader loading={isLoading} color="green" size={100} />
+      </div>
+    );
+  }
+
+  if (isError) {
+    toast.error('Failed to load movies.Please try again');
+    return <ClipLoader className="loader-container" color="red" size={100} />;
+  }
+
+  const TVShows = tvshows?.results;
+
+  if (TVShows?.length === 0) {
+    return <p>No TV shows found.</p>;
   }
 
   if (isError) {
