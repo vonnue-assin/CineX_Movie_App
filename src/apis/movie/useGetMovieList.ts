@@ -1,16 +1,15 @@
 import { useQuery } from '@tanstack/react-query';
-
-import { APIResponse } from '../../types/MovieList';
-import { endPoints } from '../endPoints';
+import { convertKeysToCamelCase } from '../../components/ConvertKeysToCamelCase';
+import { Movie } from '../../types/MovieList';
 import { DataQueryKeys } from '../data-query-keys';
+import { endPoints } from '../endPoints';
 
 export const useGetMovieList = () => {
-  return useQuery({
+  return useQuery<Movie[], Error>({
     queryKey: [DataQueryKeys.MOVIE_LIST],
     queryFn: async () => {
-      const { data }: { data: APIResponse } = await endPoints.getMovieList({
+      const { data } = await endPoints.getNowPlayingMovies({
         params: {
-          language: 'en-US',
           page: 1,
           include_adult: false,
           include_video: false,
@@ -18,7 +17,8 @@ export const useGetMovieList = () => {
         },
       });
 
-      return data.results;
+      const camelCaseData: Movie[] = convertKeysToCamelCase(data.results);
+      return camelCaseData;
     },
   });
 };

@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { MovieGenre } from '../../types/MovieGenres';
+
 import './styles.css';
 
 type MovieGenresListProps = {
@@ -23,17 +24,8 @@ export const MovieGenresList: React.FC<MovieGenresListProps> = ({
   }
 
   return (
-    <div
-      className="genres-container"
-      style={{
-        display: 'flex',
-        gap: '10px',
-        flexWrap: 'wrap',
-        marginBottom: 20,
-      }}
-    >
+    <div className="genres-container">
       <button
-        className={`genre-chip ${selectedGenreId === null ? 'selected' : ''}`}
         onClick={() => onSelectGenre(null)}
         style={{
           cursor: 'pointer',

@@ -1,10 +1,10 @@
 import { useState } from 'react';
+import { ClipLoader } from 'react-spinners';
 
 import { useGetMovieGenres } from '../../apis/movie/useGetMovieGenres';
 import { MovieGenresList } from '../MovieGenersList';
 
 import CineXIcon from '../../assets/images/CineXlogo.png';
-import { ReactComponent as MenuIcon } from '../../assets/svg/menuIcon.svg';
 
 import './styles.css';
 
@@ -14,33 +14,41 @@ const Header = () => {
 
   const { data: genres, isLoading, isError } = useGetMovieGenres();
 
-  const handleMenuClick = () => {
-    setShowGenres(prev => !prev);
+  const handleBlur = (event: React.FocusEvent<HTMLDivElement>) => {
+    if (!event.currentTarget.contains(event.relatedTarget)) {
+      setShowGenres(false);
+    }
+  };
+
+  const handleSelectGenre = (genreId: number | null) => {
+    setSelectedGenreId(genreId);
+    setShowGenres(false);
   };
 
   return (
-    <div className="header-wrapper">
+    <div className="header-wrapper" tabIndex={0} onBlur={handleBlur}>
       <div className="header-body">
-        <div className="menuIcon" onClick={handleMenuClick}>
-          <MenuIcon width={'30px'} height={'30px'} />
-        </div>
         <div className="cineX-logo-box">
-          <img src={CineXIcon} alt="cineXIcon" className="logo" />
+          <img src={CineXIcon} alt="CineX Logo" className="logo" />
         </div>
       </div>
 
       {showGenres && (
-        <>
-          {isLoading && <p>Loading genres...</p>}
-          {isError && <p>Failed to load genres. Please try again later.</p>}
+        <div className="genres-dropdown">
+          {isLoading && <ClipLoader size={30} color="red" />}
+          {isError && (
+            <p className="error-text">
+              Failed to load genres. Please try again later.
+            </p>
+          )}
           {!isLoading && !isError && (
             <MovieGenresList
               genres={genres ?? []}
               selectedGenreId={selectedGenreId}
-              onSelectGenre={setSelectedGenreId}
+              onSelectGenre={handleSelectGenre}
             />
           )}
-        </>
+        </div>
       )}
     </div>
   );

@@ -1,22 +1,25 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { ClipLoader } from 'react-spinners';
 import { toast } from 'react-toastify';
 
-import { useGetMovieList } from '../../apis/movie';
-import { useGetMovieGenres } from '../../apis/movie';
-import { MovieListCard } from '../MovieListCard';
+import { useGetMovieGenres, useGetMovieList } from '../../apis/movie';
+import { routes } from '../../routes';
+import Button from '../Button';
 import { MovieGenresList } from '../MovieGenersList';
+import { MovieListCard } from '../MovieListCard';
 
 import './styles.css';
 
 export const MovieList = () => {
   const {
-    data: movies,
+    data: moviesData,
     isLoading: moviesLoading,
     isError: moviesError,
   } = useGetMovieList();
+
   const {
-    data: genres,
+    data: genresData,
     isLoading: genresLoading,
     isError: genresError,
   } = useGetMovieGenres();
@@ -36,18 +39,32 @@ export const MovieList = () => {
     );
   }
 
-  if (!movies || movies.length === 0) return <p>No movies found</p>;
+  const movies = moviesData ?? [];
+  const genres = genresData ?? [];
 
-  if (!genres || genres.length === 0) return <p>No genres found</p>;
+  if (movies.length === 0) {
+    return <p>No movies found</p>;
+  }
+  if (genres.length === 0) {
+    return <p>No genres found</p>;
+  }
 
-  // Filter movies by selected genre if any
   const filteredMovies = selectedGenreId
-    ? movies.filter(movie => movie.genre_ids.includes(selectedGenreId))
+    ? movies.filter(movie => movie.genreIds.includes(selectedGenreId))
     : movies;
 
-  if (filteredMovies.length === 0)
-    return <p>No movies found for selected genre.</p>;
-
+  if (filteredMovies.length === 0) {
+    return (
+      <>
+        <p>No movies found for selected genre.</p>
+        <Button>
+          <Link to={routes.signIn} className="back-button">
+            Back
+          </Link>
+        </Button>
+      </>
+    );
+  }
   return (
     <>
       <h2 className="now-playing-movie-lists-title">Enjoy and Explore....</h2>
@@ -59,16 +76,7 @@ export const MovieList = () => {
       />
 
       <div className="now-playing-movie-container">
-        <div
-          className="now-playing-movie-list-container"
-          style={{
-            display: 'flex',
-            gap: '20px',
-            overflowX: 'auto',
-            paddingBottom: '20px',
-            scrollSnapType: 'x mandatory',
-          }}
-        >
+        <div className="now-playing-movie-list-container">
           {filteredMovies.map(movie => (
             <MovieListCard key={movie.id} {...movie} />
           ))}
