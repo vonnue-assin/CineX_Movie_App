@@ -1,7 +1,13 @@
+.header-wrapper {
+  position: relative;
+}
+
 .header-body {
-  padding: 20px;
-  color: #f8f7ff;
-  margin-top: 70px;
+  background-color: #f8f7ff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15px;
 }
 
 .cinex-logo {
@@ -12,17 +18,34 @@
 
 .cineX-logo-box {
   text-align: end;
-  margin-top: -85px;
-  margin-right: 10px;
-}
-
-.menuIcon {
-  position: absolute;
-  color: black;
-  top: 2%;
-  cursor: pointer;
+  position: relative;
+  left: 97%;
 }
 
 .logo {
   width: 60px;
+  height: 54px;
+}
+
+.movieGenre-details-card {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+}
+
+.movieGenre-details-card h2 {
+  font-size: 14px;
+  color: #888;
+  margin: 0;
+}
+
+.movieGenre-details-card p {
+  margin: 4px 0 0;
+  font-weight: bold;
+  color: #333;
+}
+
+.error-text {
+  color: red;
+  font-size: 14px;
 }
