@@ -29,7 +29,7 @@ export const MovieGenresList: React.FC<MovieGenresListProps> = ({
         onClick={() => onSelectGenre(null)}
         style={{
           cursor: 'pointer',
-          padding: '6px 12px',
+          padding: '7px 15px',
           borderRadius: '20px',
           border: 'none',
           backgroundColor: selectedGenreId === null ? '#ff6347' : '#eee',

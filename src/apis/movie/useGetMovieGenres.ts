@@ -1,8 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
 import { AxiosResponse } from 'axios';
 
-import { DataQueryKeys } from '../data-query-keys';
 import { MovieGenre } from '../../types/MovieGenres';
+import { DataQueryKeys } from '../data-query-keys';
 import { endPoints } from '../endPoints';
 
 interface MovieGenresApiResponse {

@@ -1,10 +1,8 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { ClipLoader } from 'react-spinners';
 import { toast } from 'react-toastify';
 
 import { useGetMovieGenres, useGetMovieList } from '../../apis/movie';
-import { routes } from '../../routes';
 import Button from '../Button';
 import { MovieGenresList } from '../MovieGenersList';
 import { MovieListCard } from '../MovieListCard';
@@ -43,10 +41,11 @@ export const MovieList = () => {
   const genres = genresData ?? [];
 
   if (movies.length === 0) {
-    return <p>No movies found</p>;
+    return <p>No movies found.</p>;
   }
+
   if (genres.length === 0) {
-    return <p>No genres found</p>;
+    return <p>No genres found.</p>;
   }
 
   const filteredMovies = selectedGenreId
@@ -57,14 +56,11 @@ export const MovieList = () => {
     return (
       <>
         <p>No movies found for selected genre.</p>
-        <Button>
-          <Link to={routes.signIn} className="back-button">
-            Back
-          </Link>
-        </Button>
+        <Button onClick={() => setSelectedGenreId(null)}>Go Back</Button>
       </>
     );
   }
+
   return (
     <>
       <h2 className="now-playing-movie-lists-title">Enjoy and Explore....</h2>
