@@ -5,9 +5,9 @@ import { MovieGenre } from '../../types/MovieGenres';
 import { DataQueryKeys } from '../data-query-keys';
 import { endPoints } from '../endPoints';
 
-interface MovieGenresApiResponse {
+type MovieGenresApiResponse = {
   genres: MovieGenre[];
-}
+};
 
 export const useGetMovieGenres = () => {
   return useQuery<MovieGenre[]>({
