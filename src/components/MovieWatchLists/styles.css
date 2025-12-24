@@ -1,0 +1,19 @@
+.watchlist-movie-container {
+  display: flex;
+  gap: 35px;
+  margin-top: 20px;
+  padding: 20px;
+}
+
+.error-message {
+  color: #fff;
+}
+
+.watchlist-title {
+  font-size: 35px;
+  color: #fff;
+  text-align: start;
+  font-family: 'bold-poppins-font';
+  margin-top: 12px;
+  margin-left: 20px;
+}
