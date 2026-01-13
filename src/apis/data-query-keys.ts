@@ -1,4 +1,4 @@
 export enum DataQueryKeys {
   MOVIE_GENRES_LIST = 'userGenresList',
-  POPULAR_PEOPLE_LIST = 'popularPeopleList',
+  NOW_PLAYING_MOVIE_LIST = 'nowPlayingMovieList',
 }
