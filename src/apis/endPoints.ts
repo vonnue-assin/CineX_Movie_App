@@ -11,4 +11,8 @@ export const endPoints = {
   //popular people lists
   getPopularPeopleList: (config?: AxiosRequestConfig) =>
     httpClient.get('3/person/popular', config),
+
+  //get tv shows lists API
+  getAllTVList: (config?: AxiosRequestConfig) =>
+    httpClient.get('3/discover/tv', config),
 };
